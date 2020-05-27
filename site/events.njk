@@ -1,0 +1,42 @@
+---
+layout: container
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{titles.events}}"
+    order: 4
+pagination:
+  data: collections.event
+  size: 100
+  alias: events
+---
+<h1 class="cmp-h1">{{ titles.events if titles.events else "Events" }}</h1>
+
+{% set futureEvents = events | getFutureItems %}
+{% set pastEvents = events | getPastItems %}
+
+
+<h2 class="cmp-h2">Upcoming events</h2>
+
+<ul>
+{% if futureEvents.length > 0%}
+{% else %}
+<p>There are no upcoming events.</p>
+{% endif %}
+{% for event in futureEvents | reverse %}
+  {% include "./includes/components/event-listing.njk" %}
+{% endfor %}
+</ul>
+
+{% if pastEvents.length > 0 %}
+<h2 class="cmp-h2">Past events</h2>
+<ul>
+  {% for event in pastEvents | reverse %}
+    {% include "./includes/components/event-listing.njk" %}
+  {% endfor %}
+</ul>
+{% endif %}
+
+
+
+
+
