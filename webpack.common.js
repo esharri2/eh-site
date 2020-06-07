@@ -6,17 +6,19 @@ PLUGINS
 mini-css-extract-plugin: Extracts CSS to separate files
 */
 
-
 const path = require("path");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-
 module.exports = {
-  entry: "./js/main.js",
+  entry: {
+    main: ["./js/main.js", "./css/main.css"],
+    trio: ["./js/trio.js", "./css/trio.css"]
+    
+  },
   output: {
     path: path.resolve(__dirname, "site/assets"),
-    filename: "bundle.js",
+    filename: "[name].bundle.js",
   },
   plugins: [new CleanWebpackPlugin(), new MiniCssExtractPlugin()],
   module: {

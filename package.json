@@ -38,7 +38,9 @@
     "mini-css-extract-plugin": "^0.9.0",
     "npm-run-all": "^4.1.5",
     "postcss": "^7.0.25",
+    "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
+    "precss": "^4.0.0",
     "purgecss": "^2.0.6",
     "style-loader": "^1.1.2",
     "tailwindcss": "^1.2.0",
@@ -50,7 +52,10 @@
     "glob": "^7.1.6",
     "html-minifier": "^4.0.0",
     "markdown-it-responsive": "^0.1.0",
+    "normalize.css": "^8.0.1",
     "rimraf": "^3.0.2",
-    "sharp": "^0.25.2"
+    "sharp": "^0.25.2",
+    "three": "^0.117.1",
+    "tone": "^13.8.25"
   }
 }
