@@ -31,6 +31,7 @@ import * as Tone from "tone";
         draggable.style.top = `${newX}px`;
         draggable.style.left = `${newY}px`;
         const dropTargetHeight = dropTarget.offsetHeight;
+        
         drones[draggableId].noteStack = { x: (newX/dropTargetHeight) * 2, y: (newY/dropTargetHeight) * 2  };
       }
     });

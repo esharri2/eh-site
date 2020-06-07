@@ -1,23 +1,23 @@
 {
   "a": {
     "type": "sine",
-    "frequency": 220,
+    "frequency": 80,
     "spread": 5,
-    "loopTime": 1,
-    "count": 5
+    "loopTime": 6,
+    "count": 7
   },
   "b": {
     "type": "triangle",
-    "frequency": 180,
+    "frequency": 110,
     "spread": 6,
-    "loopTime": 6,
-    "count": 5
+    "loopTime": 1.5,
+    "count": 7
   },
   "c": {
     "type": "sine",
-    "frequency": 80,
+    "frequency": 220,
     "spread": 3,
-    "loopTime": 3,
-    "count": 5
+    "loopTime": 0.75,
+    "count": 7
   }
 }

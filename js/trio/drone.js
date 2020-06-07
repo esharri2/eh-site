@@ -1,4 +1,4 @@
-import { FatOscillator, Reverb, Master } from "tone";
+import { FatOscillator, Filter, Reverb, Synth } from "tone";
 import {
   BufferGeometry,
   Line,
@@ -18,7 +18,8 @@ export default class {
       oscillatorSettings[id].type,
       oscillatorSettings[id].spread
     );
-    this.reverb = new Reverb({decay:1});
+    this.reverb = new Reverb({decay:2});
+    this.filter = new Filter();
 
     this.settings = oscillatorSettings[id];
     this.padElement = padElement;
@@ -61,8 +62,11 @@ export default class {
 
   play() {
     this.initViz();
-    this.osc.chain(this.reverb).toMaster();
+    // this.osc.count = this.settings.count;
+    this.osc.chain(this.reverb, this.filter).toMaster();
+    
     this.osc.start();
+
     let currentNote = 0;
     const { spread, frequency, loopTime, count } = this.settings;
 
@@ -71,7 +75,9 @@ export default class {
       const { x, y } = this.notes[currentNote];
       const newFrequency = currentNote === 0 ? frequency : frequency * x;
       const newspread = currentNote === 0 ? spread : spread * y * 10;
-      this.osc.frequency.rampTo(newFrequency, loopTime / 2);
+      console.log(newFrequency);
+      // this.osc.frequency.rampTo(newFrequency, loopTime / 2);
+      this.osc.frequency.value = newFrequency;
       this.osc.spread = newspread;
       this.timeoutId = window.setTimeout(switchNote, 1000 * loopTime);
     };
@@ -98,6 +104,7 @@ export default class {
   handleNoteStackUpdate(newNotes) {
     const { camera, material, points, renderer, scene } = this.viz;
     this.clearScene();
+    console.log(newNotes);
 
     let x = Math.ceil(newNotes.x * 12);
     let y = Math.ceil(newNotes.y * 12);
