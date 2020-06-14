@@ -53,6 +53,10 @@ h1 {
   height: 15vh;
   display:flex;
   justify-content:center;
+
+  canvas {
+    border: 1px solid lime;
+  }
 }
 
 .drop-target {

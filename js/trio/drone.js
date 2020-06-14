@@ -1,4 +1,4 @@
-import { FatOscillator, Filter, Reverb, Synth } from "tone";
+import { AutoFilter, Master, Reverb, Synth } from "tone";
 import {
   BufferGeometry,
   Line,
@@ -8,30 +8,28 @@ import {
   WebGLRenderer,
   Vector3,
 } from "three";
-import oscillatorSettings from "./oscillatorSettings.json";
+import synthSettings from "./synthSettings.json";
 
 export default class {
   constructor(id, padElement) {
     this.id = id;
-    this.osc = new FatOscillator(
-      oscillatorSettings[id].frequency,
-      oscillatorSettings[id].type,
-      oscillatorSettings[id].spread
-    );
-    this.reverb = new Reverb({decay:2});
-    this.filter = new Filter();
-
-    this.settings = oscillatorSettings[id];
+    this.synth = new Synth(synthSettings[id].settings);
+    this.autoFilter = new AutoFilter(2, 200, synthSettings[id].filterOctaves);
+    this.settings = synthSettings[id];
     this.padElement = padElement;
     this.vizElement = padElement.querySelector(".viz");
     this.notes = [
-      { x: oscillatorSettings[id].frequency, y: oscillatorSettings[id].spread },
+      {
+        x: 1,
+        y: 1,
+      },
     ];
     this.timeoutId;
     this.viz = {
       camera: new PerspectiveCamera(
-        25,
-        window.innerWidth / window.innerHeight,
+        100,
+        padElement.querySelector(".viz").offsetWidth /
+          padElement.querySelector(".viz").offsetHeight,
         1,
         500
       ),
@@ -62,23 +60,28 @@ export default class {
 
   play() {
     this.initViz();
-    // this.osc.count = this.settings.count;
-    this.osc.chain(this.reverb, this.filter).toMaster();
-    
-    this.osc.start();
-
     let currentNote = 0;
-    const { spread, frequency, loopTime, count } = this.settings;
+    const { filterOctaves, frequency, loopTime } = this.settings;
+    this.synth.chain(this.autoFilter, Master);
+    this.synth.frequency.value = frequency;
+    this.synth.triggerAttack(frequency);
 
     const switchNote = () => {
       currentNote + 1 === this.notes.length ? (currentNote = 0) : currentNote++;
-      const { x, y } = this.notes[currentNote];
-      const newFrequency = currentNote === 0 ? frequency : frequency * x;
-      const newspread = currentNote === 0 ? spread : spread * y * 10;
-      console.log(newFrequency);
-      // this.osc.frequency.rampTo(newFrequency, loopTime / 2);
-      this.osc.frequency.value = newFrequency;
-      this.osc.spread = newspread;
+      if (this.notes.length > 1) {
+        const { x, y } = this.notes[currentNote];
+        const newFrequency = currentNote === 0 ? frequency : frequency * x;
+        this.synth.frequency.rampTo(newFrequency, 0.05);
+        const newFilterOctaves =
+          currentNote === 0 ? filterOctaves : filterOctaves * y;
+        this.rampEffectValue(
+          this.autoFilter,
+          "octaves",
+          newFilterOctaves - this.autoFilter.octaves,
+          loopTime
+        );
+      }
+
       this.timeoutId = window.setTimeout(switchNote, 1000 * loopTime);
     };
 
@@ -86,7 +89,7 @@ export default class {
   }
 
   stop() {
-    this.osc.stop();
+    this.synth.triggerRelease();
     this.clearScene();
     this.viz.points = [];
     this.viz.scene.dispose();
@@ -101,38 +104,34 @@ export default class {
     }
   }
 
+  convertToCoordinates(notes) {
+    const height = this.vizElement.offsetHeight;
+    const width = this.vizElement.offsetWidth;
+
+    let coordinates = {};
+
+    coordinates.x = (notes.x - 1) * (width/2);
+    coordinates.y = (notes.y - 1) * (height/2);
+
+    return coordinates;
+  }
+
   handleNoteStackUpdate(newNotes) {
     const { camera, material, points, renderer, scene } = this.viz;
     this.clearScene();
-    console.log(newNotes);
 
-    let x = Math.ceil(newNotes.x * 12);
-    let y = Math.ceil(newNotes.y * 12);
-    let z = Math.ceil((newNotes.x + newNotes.y)/2 * 12);
+    const coordinates = this.convertToCoordinates(newNotes);
+    let z = 0;
+    
     const isEvenPoint = points.length % 2;
-
 
     // Add point according to drop
     if (isEvenPoint) {
-      x = x * -1;
-      y = y * -1;
-      z = z * -1;
+      // x = x * -1;
+      // y = y * -1;
+      // z = z * -1;
     }
-    points.push(new Vector3(x, y, z));
-
-    // Create random point near center of cluster
-    let randomX = this.getRandomNumber(12);
-    let randomY = this.getRandomNumber(12);
-    let randomZ = this.getRandomNumber(6);
-    if (isEvenPoint) {
-      randomX = randomX * -1;      
-      randomY = randomX * -1;      
-      randomZ = randomX * -1;      
-    }
-   
-    // points.push(new Vector3(randomX, randomY, randomZ ));
-    console.log(points);
-
+    points.push(new Vector3(coordinates.x, coordinates.y, z));
 
     const geometry = new BufferGeometry().setFromPoints(points);
     const line = new Line(geometry, material);
@@ -141,8 +140,8 @@ export default class {
     function animate() {
       requestAnimationFrame(animate);
       // line.rotation.x += 0.01;
-      line.rotation.y += 0.008;
-      line.rotation.z += 0.008;
+      // line.rotation.y += 0.008;
+      // line.rotation.z += 0.008;
       renderer.render(scene, camera);
     }
     animate();
@@ -150,5 +149,20 @@ export default class {
 
   getRandomNumber(max) {
     return Math.floor(Math.random() * max) + 1;
+  }
+
+  rampEffectValue(effect, valueName, changeValue, loopTime) {
+    const totalTicks = loopTime * 100;
+    let tickCount = 0;
+    const changeValuePerTick = changeValue / totalTicks;
+
+    const timer = setInterval(function () {
+      const newValue = effect[valueName] + changeValuePerTick;
+      effect[valueName] = newValue;
+      tickCount++;
+      if (tickCount === totalTicks) {
+        clearInterval(timer);
+      }
+    }, 10);
   }
 }

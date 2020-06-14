@@ -26,12 +26,15 @@ import * as Tone from "tone";
       if (draggableId === target.dataset.id) {
         const { top, left } = target.getBoundingClientRect();
         const draggable = target.querySelector(`#${draggableId}`);
-        const newX = y - top;
-        const newY = x - left;
-        draggable.style.top = `${newX}px`;
-        draggable.style.left = `${newY}px`;
-        const dropTargetHeight = dropTarget.offsetHeight;
-        
+        const newY = y - top;
+        const newX = x - left;
+        draggable.style.top = `${newY}px`;
+        draggable.style.left = `${newX}px`;
+        const dropTargetHeight = dropTarget.offsetHeight;  
+        console.log({
+          x: (newX / dropTargetHeight) * 2,
+          y: (newY / dropTargetHeight) * 2,
+        });
         drones[draggableId].noteStack = { x: (newX/dropTargetHeight) * 2, y: (newY/dropTargetHeight) * 2  };
       }
     });
