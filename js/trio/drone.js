@@ -27,7 +27,7 @@ export default class {
     this.timeoutId;
     this.viz = {
       camera: new PerspectiveCamera(
-        100,
+        110,
         padElement.querySelector(".viz").offsetWidth /
           padElement.querySelector(".viz").offsetHeight,
         1,
@@ -111,25 +111,24 @@ export default class {
     let coordinates = {};
 
     coordinates.x = (notes.x - 1) * (width/2);
-    coordinates.y = (notes.y - 1) * (height/2);
+    coordinates.y = (notes.y - 1) * (height/2) * -1;
 
     return coordinates;
   }
 
   handleNoteStackUpdate(newNotes) {
     const { camera, material, points, renderer, scene } = this.viz;
+    const {loopTime} = this.settings;
     this.clearScene();
 
     const coordinates = this.convertToCoordinates(newNotes);
-    let z = 0;
+    let z = this.getRandomNumber(40);
     
     const isEvenPoint = points.length % 2;
 
     // Add point according to drop
     if (isEvenPoint) {
-      // x = x * -1;
-      // y = y * -1;
-      // z = z * -1;
+      z = z * -1;
     }
     points.push(new Vector3(coordinates.x, coordinates.y, z));
 
@@ -137,11 +136,13 @@ export default class {
     const line = new Line(geometry, material);
     scene.add(line);
 
+    const baseRotation = 10;
+
     function animate() {
       requestAnimationFrame(animate);
-      // line.rotation.x += 0.01;
-      // line.rotation.y += 0.008;
-      // line.rotation.z += 0.008;
+      line.rotation.x += (baseRotation - loopTime) * .0010;
+      line.rotation.y += (baseRotation - loopTime) * .0008;
+      line.rotation.z += (baseRotation - loopTime) * .0006;
       renderer.render(scene, camera);
     }
     animate();

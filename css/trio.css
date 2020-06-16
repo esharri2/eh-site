@@ -55,7 +55,7 @@ h1 {
   justify-content:center;
 
   canvas {
-    border: 1px solid lime;
+    /* border: 1px solid lime; */
   }
 }
 

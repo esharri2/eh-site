@@ -52,6 +52,12 @@ import * as Tone from "tone";
       const drone = drones[button.dataset.id];
       if (button.classList.contains("stop")) {
         drone.stop();
+        const draggable = event.target.closest(".pad").querySelector(".draggable");
+        // Clear style to recenter
+        draggable.removeAttribute("style");
+        // draggable.style.top = "45%";
+        // draggable.style.top = "45%";
+        // recenter
       } else {
         drone.play();
       }
