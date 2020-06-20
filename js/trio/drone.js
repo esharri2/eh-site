@@ -1,4 +1,4 @@
-import { AutoFilter, Master, Reverb, Synth } from "tone";
+import { AutoFilter, BitCrusher, Distortion, Freeverb, JCReverb, Master, Reverb, Synth } from "tone";
 import {
   BufferGeometry,
   Line,
@@ -15,6 +15,12 @@ export default class {
     this.id = id;
     this.synth = new Synth(synthSettings[id].settings);
     this.autoFilter = new AutoFilter(2, 200, synthSettings[id].filterOctaves);
+    this.reverb = new Freeverb();
+    this.distortion = new Distortion({
+      distortion: 0,
+      oversample: 'none',
+    });
+    this.bitCrusher = new BitCrusher({bits: 8})
     this.settings = synthSettings[id];
     this.padElement = padElement;
     this.vizElement = padElement.querySelector(".viz");
@@ -47,9 +53,11 @@ export default class {
 
   initViz() {
     const { camera, points, renderer, scene } = this.viz;
-    const size = this.vizElement.offsetHeight;
+    const height = this.vizElement.offsetHeight;
+    const width = this.vizElement.offsetWidth;
+
     renderer.setClearColor(0xfff5ff, 0);
-    renderer.setSize(size, size);
+    renderer.setSize(width, height);
 
     this.vizElement.appendChild(renderer.domElement);
     camera.position.set(0, 0, 100);
@@ -62,7 +70,8 @@ export default class {
     this.initViz();
     let currentNote = 0;
     const { filterOctaves, frequency, loopTime } = this.settings;
-    this.synth.chain(this.autoFilter, Master);
+    console.log(this.reverb);
+    this.synth.chain(this.reverb, this.autoFilter, Master);
     this.synth.frequency.value = frequency;
     this.synth.triggerAttack(frequency);
 
@@ -110,20 +119,20 @@ export default class {
 
     let coordinates = {};
 
-    coordinates.x = (notes.x - 1) * (width/2);
-    coordinates.y = (notes.y - 1) * (height/2) * -1;
+    coordinates.x = (notes.x - 1) * (width / 2);
+    coordinates.y = (notes.y - 1) * (height / 2) * -1;
 
     return coordinates;
   }
 
   handleNoteStackUpdate(newNotes) {
     const { camera, material, points, renderer, scene } = this.viz;
-    const {loopTime} = this.settings;
+    const { loopTime } = this.settings;
     this.clearScene();
 
     const coordinates = this.convertToCoordinates(newNotes);
-    let z = this.getRandomNumber(40);
-    
+    let z = this.getRandomNumber(30);
+
     const isEvenPoint = points.length % 2;
 
     // Add point according to drop
@@ -140,8 +149,8 @@ export default class {
 
     function animate() {
       requestAnimationFrame(animate);
-      line.rotation.x += (baseRotation - loopTime) * .0010;
-      line.rotation.y += (baseRotation - loopTime) * .0008;
+      // line.rotation.x += (baseRotation - loopTime) * 0.001;
+      // line.rotation.y += (baseRotation - loopTime) * 0.0008;
       line.rotation.z += (baseRotation - loopTime) * .0006;
       renderer.render(scene, camera);
     }
