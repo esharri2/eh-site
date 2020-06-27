@@ -16,6 +16,9 @@ module.exports = (config) => {
 
   // Include our static assets
   config.addPassthroughCopy({ "site/assets": "/" });
+  config.addPassthroughCopy({ "site/media/home": "/media" });
+  config.addPassthroughCopy({ "site/media/home/icons": "/media" });
+
   config.setUseGitIgnore(false);
  
   // Transforms

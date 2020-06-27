@@ -13,6 +13,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
   entry: {
     main: ["./js/main.js", "./css/main.css"],
+    home: ["./js/home.js", "./css/home.css"],
     trio: ["./js/trio.js", "./css/trio.css"]
     
   },

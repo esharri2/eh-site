@@ -15,6 +15,12 @@ import * as Tone from "tone";
       initDropTarget(pad.querySelector(".drop-target"));
       initDraggable(pad.querySelector(".draggable"));
       initPlayButton(pad.querySelector("button.play"));
+      initVolumeControl(pad.querySelector("input[name='volume']"), drones[id]);
+      initVibratoControl(
+        pad.querySelector("input[name='vibrato']"),
+        drones[id]
+      );
+
     }
   }
 
@@ -55,13 +61,23 @@ import * as Tone from "tone";
         const draggable = event.target.closest(".pad").querySelector(".draggable");
         // Clear style to recenter
         draggable.removeAttribute("style");
-        // draggable.style.top = "45%";
-        // draggable.style.top = "45%";
-        // recenter
       } else {
         drone.play();
       }
       button.classList.toggle("stop");
     });
   }
+
+  function initVolumeControl(input, drone) {
+    input.addEventListener("input", event=>{
+      drone.vol = event.target.value;
+    })
+  }
+
+    function initVibratoControl(input, drone) {
+      input.addEventListener("input", (event) => {
+        drone.vibratoFrequency = event.target.value;
+      });
+    }
+
 })();

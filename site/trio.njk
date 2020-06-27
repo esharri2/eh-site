@@ -10,9 +10,14 @@ drones:
   - b
   - c
 effects:
-  - reverb
-  - distortion
-  - volume
+  - name: volume
+    value: 0
+    max: 12
+    min: -12
+  - name: vibrato
+    value: 0
+    max: 5
+    min: 0
 ---
 
 
@@ -30,8 +35,8 @@ effects:
             <div class="controls">
               {% for effect in effects %}
               <div class="control">
-                <label for="points">{{effect}}</label>
-                <input type="range" id="{{effect}}" name="{{effect}}" min="0" max="1" step="0.02">
+                <label for="points">{{effect.name}}</label>
+                <input type="range" id="{{effect.name}}" name="{{effect.name}}" min="{{effect.min}}" max="{{effect.max}}" value="{{effect.value}}" step="0.5">
               </div>
               {% endfor %}
             </div>

@@ -1,4 +1,4 @@
-import { AutoFilter, BitCrusher, Distortion, Freeverb, JCReverb, Master, Reverb, Synth } from "tone";
+import { AutoFilter, BitCrusher, Distortion, Freeverb, JCReverb, Master, Reverb, Synth, Vibrato, Volume } from "tone";
 import {
   BufferGeometry,
   Line,
@@ -21,6 +21,16 @@ export default class {
       oversample: 'none',
     });
     this.bitCrusher = new BitCrusher({bits: 8})
+    this.volume = new Volume({
+      volume: 0,
+      mute: false,
+    });
+    this.vibrato = new Vibrato({
+      maxDelay: 0.005,
+      frequency: 0,
+      depth: 0.2,
+      type: "sine",
+    });
     this.settings = synthSettings[id];
     this.padElement = padElement;
     this.vizElement = padElement.querySelector(".viz");
@@ -51,6 +61,15 @@ export default class {
     this.handleNoteStackUpdate(newNotes);
   }
 
+  set vol(value) {
+    this.volume.volume.value = value;
+  }
+
+  set vibratoFrequency(value) {
+    console.log(value);
+    this.vibrato.frequency.value = value;
+  }
+
   initViz() {
     const { camera, points, renderer, scene } = this.viz;
     const height = this.vizElement.offsetHeight;
@@ -71,7 +90,7 @@ export default class {
     let currentNote = 0;
     const { filterOctaves, frequency, loopTime } = this.settings;
     console.log(this.reverb);
-    this.synth.chain(this.reverb, this.autoFilter, Master);
+    this.synth.chain(this.volume, this.vibrato, this.autoFilter, Master);
     this.synth.frequency.value = frequency;
     this.synth.triggerAttack(frequency);
 
