@@ -3,22 +3,26 @@
 $title-font: "Playfair Display", "Times New Roman", serif;
 $body-font: system-ui, Helvetica, serif;
 
-$jet: #333232;
-$blue: #2d93ad;
-$white: #e7ecef;
-$pink: #fdecef;
 $forest: #364333;
 
-$smoke: #211103;
 $fern: #5c7457;
 $spring-bud: #dfd9e2;
+$pink-bud: #f9c9d1;
+$brown-sugar: #b96d40;
 
 html {
   --foreground-color: $fern;
-  --foreground-color-hover: $forest;
+  --hover-color: $forest;
   --background-color: $spring-bud;
-  --accent-color: $blue;
+  --accent-color: $brown-sugar;
   box-sizing: border-box;
+}
+
+html.dark {
+  --foreground-color: $spring-bud;
+  --hover-color: $pink-bud;
+  --background-color: $fern;
+  --accent-color: $brown-sugar;
 }
 
 *,
@@ -31,6 +35,7 @@ body {
   background-color: var(--background-color);
   color: var(--foreground-color);
   font-family: $body-font;
+  transition: all 0.2s;
 }
 
 h1,
@@ -41,13 +46,25 @@ h4 {
 }
 
 h1 {
-  font-size: 6rem;
+  font-size: 4rem;
   font-weight: normal;
   margin: 0 0 2rem 0;
+
+  @include tablet {
+    font-size: 6rem;
+  }
 }
 
 button {
-  background-color: var(--accent-color);
+  background-color: transparent;
+  border: none;
+}
+
+a:focus,
+input:focus,
+button:focus {
+  /* outline-color: var(--accent-color); */
+  outline: 0;
 }
 
 p {
@@ -68,10 +85,38 @@ ul {
 svg {
   fill: var(--foreground-color);
   width: 2rem;
+  height: auto;
 }
 
 section {
   margin-top: 9rem;
+}
+
+.fader {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2rem;
+  background: linear-gradient(
+    180deg,
+    var(--background-color) 0%,
+    transparent 100%
+  );
+}
+
+.dark-mode {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+
+  &:hover,
+  &:focus {
+    svg {
+      fill: var(--hover-color);
+      transition: transform 0.2s;
+    }
+  }
 }
 
 .social-link-list {
@@ -82,9 +127,10 @@ section {
     margin-right: 1rem;
   }
 
-  a:hover {
+  a:hover,
+  a:focus {
     svg {
-      fill: var(--foreground-color-hover);
+      fill: var(--hover-color);
     }
   }
 }
@@ -93,6 +139,7 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 1rem;
 }
 
 .title-section {
@@ -110,6 +157,7 @@ section {
 .title-section__details {
   font-size: 1.3rem;
   text-transform: uppercase;
+  margin-bottom: 2rem;
 
   @include tablet {
     width: 40%;
@@ -128,7 +176,7 @@ section {
   margin-left: auto;
   margin-right: auto;
   display: grid;
-  grid-gap: 3rem;
+  grid-gap: 3.5rem;
 
   @include tablet {
     grid-template-columns: 1fr 1fr;
@@ -143,8 +191,18 @@ section {
     padding: 0 1rem;
   }
 
+  .screen-shot-link {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
   .screen-shot {
-    max-width: 100%;
+    max-width: 80%;
+
+    @include tablet {
+      max-width: 100%;
+    }
   }
 
   p {
@@ -186,7 +244,7 @@ section {
   border: none;
 
   &:hover {
-    background-color: var(--foreground-color-hover);
+    background-color: var(--hover-color);
   }
 }
 
@@ -228,5 +286,9 @@ form {
 
   .btn {
     width: 100%;
+  }
+
+  .submit {
+    min-height: 40px;
   }
 }

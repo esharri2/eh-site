@@ -1,6 +1,7 @@
 ---
 layout: container
 title: Evan Harrison
+description: Evan Harrison is a web developer based in Raleigh, NC.
 fonts: Playfair+Display:wght@700
 js: home
 css: home
@@ -30,13 +31,12 @@ portfolio:
   - title: Trio
     img: trio.png
     description:
-      This is the site you're on! It's a static site built with Eleventy that
-      uses Webpack + PurgeCSS to produce a minimal Tailwind CSS stylesheet.
+      A three piece synthesizer and visualizer. Uses the Web Audio API via
+      Tone.js and Three.js.
     link: https://www.evan-harrison.com/trio
     github_link: https://github.com/portfolio
     tools:
       - eleventy
-      - tailwindcss
       - webpack
   - title: Cindy Wagner Fine Art
     img: cwfa-screen.png
@@ -52,6 +52,10 @@ portfolio:
       - react
 ---
 
+<div class="fader"></div>
+<button class="dark-mode">
+  {% include "./media/icons/brightness-medium.svg" %}
+</button>
 <section class="title-section">
   <h1>{{ title }}</h1>
   <div class="title-section__details">
@@ -90,7 +94,7 @@ portfolio:
   {% for item in portfolio %}
   <div class="portfolio-section__tile">
     <h2>{{ item.title }}</h2>
-    <a href="{{ item.link }}">
+    <a class="screen-shot-link" href="{{ item.link }}">
       <img class="screen-shot" loading="lazy" src="media/{{ item.img }}" />
     </a>
     <p>{{ item.description }}</p>
@@ -136,7 +140,7 @@ portfolio:
       </label>
     </p>
     <p>
-      <button class="btn" type="submit">
+      <button class="btn submit" type="submit">
         Send
       </button>
     </p>
