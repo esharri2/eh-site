@@ -10,10 +10,13 @@ eleventyNavigation:
 social_links:
   - link: https://github.com/esharri2
     icon: github.svg
+    label: Github
   - link: https://www.linkedin.com/in/evan-harrison/
     icon: linkedin.svg
+    label: Linkedin
   - link: mailto:esharri2@gmail.com
     icon: email.svg
+    label: email
 portfolio:
   - title: Vois
     img: vois-screen.png
@@ -56,7 +59,7 @@ portfolio:
 ---
 
 <div class="fader"></div>
-<button class="dark-mode">
+<button aria-label="Toggle dark mode" class="dark-mode">
   {% include "./media/icons/brightness-medium.svg" %}
 </button>
 <section class="title-section">
@@ -67,7 +70,7 @@ portfolio:
     <ul class="social-link-list">
       {% for item in social_links %}
       <li>
-        <a href="{{ item.link }}">
+        <a aria-label="{{ item.label }}" href="{{ item.link }}">
           {% set iconPath %}./media/icons/{{ item.icon }}{% endset %}
           {{ item.icon | log }}
           {{ iconPath | log }}
