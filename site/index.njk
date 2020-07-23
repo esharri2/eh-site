@@ -17,6 +17,7 @@ social_links:
 portfolio:
   - title: Vois
     img: vois-screen.png
+    alt: "Screenshot of Vois app"
     description:
       A talking timer for yoga and exercise. A progressive web app built with
       React, Vois allows people to build and save exercise sequences, where each
@@ -30,6 +31,7 @@ portfolio:
       - styled-components
   - title: Trio
     img: trio.png
+    alt: "Screenshot of Trio app"
     description:
       A three piece synthesizer and visualizer. Uses the Web Audio API via
       Tone.js and Three.js.
@@ -40,6 +42,7 @@ portfolio:
       - webpack
   - title: Cindy Wagner Fine Art
     img: cwfa-screen.png
+    alt: "Screenshot of Cindy Wagner Fine Art site"
     description:
       A website and gallery for Charlotte, NC artist Cindy Wagner. This Gatsby
       site uses Strapi, a headless CMS, for content authoring and triggering
@@ -95,7 +98,12 @@ portfolio:
   <div class="portfolio-section__tile">
     <h2>{{ item.title }}</h2>
     <a class="screen-shot-link" href="{{ item.link }}">
-      <img class="screen-shot" loading="lazy" src="media/{{ item.img }}" />
+      <img
+        alt="{{ item.alt }}"
+        class="screen-shot"
+        loading="lazy"
+        src="media/{{ item.img }}"
+      />
     </a>
     <p>{{ item.description }}</p>
     <ul class="tools">
