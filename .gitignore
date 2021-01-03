@@ -1,6 +1,5 @@
 /node_modules
-_site/
-_temp/
+/site/assets
+dist/
 .DS_Store
 .vscode
-
