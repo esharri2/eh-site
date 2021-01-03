@@ -1,0 +1,31 @@
+{
+  "name": "ev-eleventy-starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "eleventy --serve & postcss styles/main.css --o _temp/main.css --watch",
+    "build": "ELEVENTY_PRODUCTION=true eleventy & NODE_ENV=production postcss styles/main.css --o _site/main.css && cleancss _site/main.css -o _site/main.css ",
+    "clean": "rm -r _site _temp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/esharri2/ev-eleventy-starter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/esharri2/ev-eleventy-starter/issues"
+  },
+  "homepage": "https://github.com/esharri2/ev-eleventy-starter#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.11.1",
+    "@11ty/eleventy-img": "^0.7.0",
+    "autoprefixer": "^10.1.0",
+    "clean-css-cli": "^4.3.0",
+    "html-minifier": "^4.0.0",
+    "postcss": "^8.2.2",
+    "tailwindcss": "^2.0.2"
+  }
+}
