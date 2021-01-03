@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# ev-eleventy-starter
-=======
 # WIP WIP WIP WIP
 
 # EvEleventy Starter
@@ -63,4 +60,3 @@ in place of template languages. For partials, it uses
 [JavaScript template functions](https://www.11ty.dev/docs/languages/javascript/#javascript-template-functions).
 During the build, it reads the contents of `/functions`, requires each file, and
 adds its export as a template function.
->>>>>>> bbe315753f72598ee410139bee62cee827190c28
