@@ -7,7 +7,10 @@
     "startX": "npx @11ty/eleventy --serve & postcss styles/main.css --o _temp/main.css --watch",
     "css": "postcss styles/main.css --o _temp/main.css --verbose",
     "start": "npx @11ty/eleventy --serve",
-    "build": "ELEVENTY_PRODUCTION=true eleventy & NODE_ENV=production postcss styles/main.css --o _site/main.css & uglifyjs-folder scripts -o _site/ -x .js -e",
+    "buildx": "ELEVENTY_PRODUCTION=true eleventy & NODE_ENV=production postcss styles/main.css --o _site/main.css & uglifyjs-folder scripts -o _site/ -x .js -e",
+    "build": "ELEVENTY_PRODUCTION=true eleventy & NODE_ENV=production postcss styles/main.css --o _site/main.css",
+
+    
     "clean": "rm -r _site _temp"
   },
   "repository": {
