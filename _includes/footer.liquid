@@ -1,0 +1,16 @@
+<footer
+    class="border-t border-black border-solid p-4">
+    {% render 'navigation', navigation: navigation%}
+    <p
+        class="text-xs mt-4">Copyright [add date?]
+    </p>
+    <p
+        class="text-xs">
+        <a
+            class="underline"
+            href="{{builtBy.url}}">
+            Site by
+            {{builtBy.name}}
+        </a>
+    </p>
+</footer>

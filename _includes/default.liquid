@@ -1,0 +1,20 @@
+<html class="font-body">
+    {% render 'head', site: data.site %}
+    <body
+        class="relative">
+        {% render 'skip-to-content' %}
+        {% render 'back-to-top' %}
+        <header>
+            <div
+                class="container">
+                {% render 'navigation', navigation: navigation, page: page %}
+            </div>
+        </header>
+        <main
+            class="min-h-screen"
+            id="main">
+            {{ content }}
+        </main>
+        {% render 'footer', builtBy: site.builtBy, navigation: navigation_footer %}
+    </body>
+</html>

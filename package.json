@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "eleventy --serve & postcss styles/main.css --o _temp/main.css --watch",
-    "build": "ELEVENTY_PRODUCTION=true eleventy & NODE_ENV=production postcss styles/main.css --o _site/main.css && cleancss _site/main.css -o _site/main.css ",
+    "startX": "npx @11ty/eleventy --serve & postcss styles/main.css --o _temp/main.css --watch",
+    "css": "postcss styles/main.css --o _temp/main.css --verbose",
+    "start": "npx @11ty/eleventy --serve",
+    "build": "ELEVENTY_PRODUCTION=true eleventy & NODE_ENV=production postcss styles/main.css --o _site/main.css & uglifyjs-folder scripts -o _site/ -x .js -e",
     "clean": "rm -r _site _temp"
   },
   "repository": {
@@ -20,14 +22,17 @@
   },
   "homepage": "https://github.com/esharri2/ev-eleventy-starter#readme",
   "devDependencies": {
-    "@11ty/eleventy": "^0.11.1",
-    "@11ty/eleventy-img": "^0.7.0",
-    "autoprefixer": "^10.1.0",
+    "@11ty/eleventy": "github:11ty/eleventy",
+    "@11ty/eleventy-img": "^0.7.3",
+    "autoprefixer": "^10.2.1",
     "clean-css-cli": "^4.3.0",
+    "cssnano": "^4.1.10",
     "html-minifier": "^4.0.0",
-    "postcss": "^8.2.2",
+    "postcss": "^8.2.4",
     "postcss-cli": "^8.3.1",
     "postcss-import": "12.0.1",
-    "tailwindcss": "^2.0.2"
+    "tailwindcss": "^2.0.2",
+    "uglify-js": "^3.12.4",
+    "uglifyjs-folder": "^2.0.0"
   }
 }

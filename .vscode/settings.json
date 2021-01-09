@@ -1,0 +1,34 @@
+{
+    "editor.fontSize": 18,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "editor.formatOnPaste": true,
+    "html.format.indentHandlebars": true,
+    "prettier.proseWrap": "always",
+    "window.zoomLevel": 0,
+    "terminal.integrated.fontSize": 16,
+    "editor.autoClosingBrackets": "always",
+    "editor.autoClosingQuotes": "always",
+    "workbench.enableExperiments": false,
+    "workbench.editor.enablePreview": false,
+    "explorer.confirmDelete": false,
+    "colorize.languages": [
+        "javascript"
+    ],
+    "[liquid]": {
+        "editor.defaultFormatter": "sissel.shopify-liquid",
+    },
+    "[html]": {
+        "editor.defaultFormatter": "sissel.shopify-liquid"
+    },
+    "editor.formatOnSave": true,
+    "editor.linkedEditing": true,
+    "editor.renderControlCharacters": true,
+    "liquid.format": true,
+    "prettier.disableLanguages": [
+        "html",
+        "liquid"
+    ],
+    "files.associations": {
+        "*.liquid": "html"
+    }
+}
