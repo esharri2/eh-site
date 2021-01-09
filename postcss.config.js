@@ -1,3 +1,6 @@
 module.exports = {
-  plugins: [require(`tailwindcss`)(`./styles/tailwind.config.js`)],
+  plugins: [
+    require("postcss-import"),
+    require(`tailwindcss`)(`./styles/tailwind.config.js`),
+  ],
 };

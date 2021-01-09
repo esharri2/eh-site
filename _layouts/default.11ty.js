@@ -2,11 +2,16 @@ class Default {
   render(data) {
     /*html*/
     return `
-    <html class="bg-purple-100 text-gray-900">
+    <html>
       ${this.head(data)}
-      <body class="m-auto mt-8 max-w-4xl">
-        <header>${this.navigation(data)}</header>
-        <main class="p-4">${data.content}</main>
+      <body class="relative">
+        ${this.skip_to_content()}
+        ${this.back_to_top()}
+        <header>
+          <div class="container">${this.navigation(data)}</div>
+        </header>
+        <main id="main" class="min-h-screen">${data.content}</main>
+        ${this.footer(data, this)}
       </body>
     </html>`;
   }

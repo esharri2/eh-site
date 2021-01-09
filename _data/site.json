@@ -1,4 +1,8 @@
 {
   "title": "ev-eleventy-starter",
-  "description": "A simple Eleventy starter project."
+  "description": "A simple Eleventy starter project.",
+  "builtBy": {
+    "name": "EH",
+    "url": "https://www.evan-harrison.com"
+  }
 }

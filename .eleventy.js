@@ -4,6 +4,8 @@ const htmlmin = require("html-minifier");
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("./images/*");
   eleventyConfig.addPassthroughCopy({ "./_temp/main.css": "./main.css" });
+  eleventyConfig.addPassthroughCopy({ "./scripts/*.js": "./" });
+
   eleventyConfig.addPassthroughCopy({ "./fonts/*": "./" });
 
   for (const file of functionFiles) {
@@ -29,7 +31,7 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addWatchTarget("./_temp/main.css");
-
+  eleventyConfig.setDataDeepMerge(true);
   eleventyConfig.setUseGitIgnore(false);
 
   return {

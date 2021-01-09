@@ -3,7 +3,6 @@ module.exports = ({ page, navigation }) => /*html*/ `
   <ul class="flex">
   ${navigation
     .map((item) => {
-      console.log(page.filePathStem);
       const isCurrentPage = page.filePathStem === item.key;
       /*html */
       return `<li class="p-4 ${isCurrentPage && "underline"}" ${
