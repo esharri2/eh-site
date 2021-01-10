@@ -32,10 +32,11 @@
     "postcss": "^8.2.4",
     "postcss-cli": "^8.3.1",
     "postcss-import": "12.0.1",
+    "rollup": "^2.36.1",
     "rollup-plugin-uglify": "^6.0.4",
     "tailwindcss": "^2.0.2"
   },
-    "browserslist": [
+  "browserslist": [
     "defaults",
     "not IE 11",
     "maintained node versions"
