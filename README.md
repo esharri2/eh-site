@@ -1,11 +1,15 @@
-# WIP WIP WIP WIP
-
 # EvEleventy Starter
 
 This is an Eleventy starter project. It uses Liquid templates, 
 TailwindCSS, and PostCSS and Rollup.js for bundling.
 
 ## Features
+
+### Commands
+
+Start in development: `npm start`. Note that JS and CSS are not watched. You will need to run this command again if you make changes to CSS in /styles or JS in /scripts.
+
+Build: `npm build`
 
 ### Client-side JavaScript
 
