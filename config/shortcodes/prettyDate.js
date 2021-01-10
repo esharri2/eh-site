@@ -1,6 +1,7 @@
 const prettyDate = (eleventyConfig) => {
   eleventyConfig.addShortcode("prettyDate", function (date) {
-    return new Date(date).toLocaleDateString(undefined, {
+    const rawDate = date || new Date().getTime();
+    return new Date(rawDate).toLocaleDateString(undefined, {
       month: "long",
       day: "numeric",
       year: "numeric",

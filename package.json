@@ -9,8 +9,8 @@
     "clean": "rm -r -f _site _temp",
     "process.css": "postcss styles/main.css --o _temp/main.css --verbose",
     "process.css.prod": "NODE_ENV=production postcss styles/main.css --o _site/main.css",
-    "process.js": "rollup scripts/main.js --file _temp/main.js --format umd --name 'myBundle'",
-    "process.js.prod": "rollup scripts/main.js --file _temp/main.js --format umd --name 'myBundle'"
+    "process.js": "rollup -c",
+    "process.js.prod": "NODE_ENV=production rollup -c"
   },
   "repository": {
     "type": "git",
@@ -27,14 +27,17 @@
     "@11ty/eleventy": "github:11ty/eleventy",
     "@11ty/eleventy-img": "^0.7.3",
     "autoprefixer": "^10.2.1",
-    "clean-css-cli": "^4.3.0",
     "cssnano": "^4.1.10",
     "html-minifier": "^4.0.0",
     "postcss": "^8.2.4",
     "postcss-cli": "^8.3.1",
     "postcss-import": "12.0.1",
-    "tailwindcss": "^2.0.2",
-    "uglify-js": "^3.12.4",
-    "uglifyjs-folder": "^2.0.0"
-  }
+    "rollup-plugin-uglify": "^6.0.4",
+    "tailwindcss": "^2.0.2"
+  },
+    "browserslist": [
+    "defaults",
+    "not IE 11",
+    "maintained node versions"
+  ]
 }

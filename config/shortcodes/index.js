@@ -1,4 +1,5 @@
 module.exports = (eleventyConfig) => {
-  require("./image")(eleventyConfig);
+  require("./picture")(eleventyConfig);
   require("./prettyDate")(eleventyConfig);
+  require("./currentYear")(eleventyConfig);
 };

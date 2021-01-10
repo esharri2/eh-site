@@ -10,7 +10,7 @@
     "correct": true,
     "force_attribute": true,
     "braces": false,
-    "preserve": 1,
+    "preserve": 0,
     "wrap": 60,
     "preserve_text": true,
     "content": true,
