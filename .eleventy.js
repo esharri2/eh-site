@@ -8,7 +8,10 @@ module.exports = function (eleventyConfig) {
   addTransforms(eleventyConfig);
   // Misc options
 
-  // eleventyConfig.addWatchTarget("./_temp/main.css");
+  // todo can just watch dir?
+  eleventyConfig.addWatchTarget("./_temp/main.css");
+  eleventyConfig.addWatchTarget("./_temp/main.js");
+
   eleventyConfig.setDataDeepMerge(true);
   eleventyConfig.setLiquidOptions({
     dynamicPartials: true,
