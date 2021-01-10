@@ -4,7 +4,9 @@
     <meta
         content="width=device-width, initial-scale=1"
         name="viewport">
-    <title>{{ site.title }}
+    <title>{{title}}
+        {% if title %} | {% endif %}
+        {{ site.title }}
     </title>
     <meta
         name="description"
@@ -14,18 +16,19 @@
     <meta
         content="width=device-width, initial-scale=1.0"
         name="viewport" />
+    <meta
+        content="#999999"
+        name="theme-color" />
     <link
         as="font"
         crossorigin
         href="manrope-regular.woff2"
         rel="preload"
         type="font/woff2" />
-
     <link
         href="/main.css"
         rel="stylesheet"
         type="text/css" />
     <script
-        src="/main.js"
-        type="module"></script>
+        src="/main.js"></script>
 </head>
