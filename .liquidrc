@@ -8,7 +8,7 @@
   ],
   "html": {
     "correct": true,
-    "force_attribute": true,
+    "force_attribute": false,
     "braces": false,
     "preserve": 0,
     "wrap": 60,

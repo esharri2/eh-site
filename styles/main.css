@@ -4,3 +4,4 @@
 @import "./elements.css";
 @import "tailwindcss/utilities";
 @import "./skip-to-content.css";
+@import "./ie-notice.css"

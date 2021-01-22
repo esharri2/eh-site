@@ -1,7 +1,9 @@
-<html class="font-body text-dark bg-light">
+<!DOCTYPE html>
+<html lang="en" class="font-body text-dark bg-light">
     {% render 'head', site: site, page: page, title: title %}
     <body
         class="relative">
+        {% render 'ie-notice'%}
         {% render 'skip-to-content' %}
         {% render 'back-to-top' %}
         <header>

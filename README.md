@@ -7,9 +7,9 @@ TailwindCSS, and PostCSS and Rollup.js for bundling.
 
 ### Commands
 
-Start in development: `npm start`. Note that JS and CSS are not watched. You will need to run this command again if you make changes to CSS in /styles or JS in /scripts.
+Start in development: `npm start`. Note that CSS is not watched. You can run `npm run dev:css` to build the CSS.
 
-Build: `npm build`
+Build: `npm run build`
 
 ### Client-side JavaScript
 

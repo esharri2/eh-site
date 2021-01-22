@@ -4,13 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run process.css && npm run process.js && npx @11ty/eleventy --serve",
-    "build": "ELEVENTY_PRODUCTION=true npx @11ty/eleventy && npm run process.js.prod && npm run process.css.prod",
+    "build": "ELEVENTY_PRODUCTION=true npm-run-all clean build:*",
+    "build:11ty": "npx @11ty/eleventy",
+    "build:css": "NODE_ENV=production postcss styles/main.css --o _site/main.css",
+    "build:js": "NODE_ENV=production rollup --config ",
     "clean": "rm -r -f _site _temp",
-    "process.css": "postcss styles/main.css --o _temp/main.css --verbose",
-    "process.css.prod": "NODE_ENV=production postcss styles/main.css --o _site/main.css",
-    "process.js": "rollup -c",
-    "process.js.prod": "NODE_ENV=production rollup -c"
+    "dev": "npm-run-all -p dev:*",
+    "dev:11ty" : "npx @11ty/eleventy --serve --quiet",
+    "dev:css": "postcss styles/main.css --o _temp/main.css --verbose",
+    "dev:js": "rollup --config --watch",
+    "start": "npm run dev"
   },
   "repository": {
     "type": "git",
@@ -29,6 +32,7 @@
     "autoprefixer": "^10.2.1",
     "cssnano": "^4.1.10",
     "html-minifier": "^4.0.0",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.2.4",
     "postcss-cli": "^8.3.1",
     "postcss-import": "12.0.1",
