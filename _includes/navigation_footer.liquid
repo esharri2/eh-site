@@ -1,9 +1,8 @@
 <nav>
     <ul>
         {% for item in navigation %}
-            <li class=" ">
-                <a href="{{item.key}}">{{item.title}}
-                </a>
+            <li>
+                <a class="block py-1" href="{{item.key}}">{{item.title}}</a>
             </li>
         {% endfor %}
     </ul>
