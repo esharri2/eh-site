@@ -1,6 +1,8 @@
-<nav>
-    <ul
-        class="flex">
+<nav data-nav>
+    <button class="lg:hidden text-light dark:text-dark" aria-hidden="true" data-nav-open>{{ '/_includes/icons/menu.svg' | svgContents:'w-3 h-3' }}</button>
+    <ul class="sr-only fixed bg-dark dark:bg-light text-light dark:text-dark inset-0 lg:not-sr-only lg:flex" data-nav-links>
+        <button aria-hidden="true" class="container lg:hidden flex items-center h-5" data-nav-close>{{ '/_includes/icons/cross.svg' | svgContents:'w-3 h-3' }}</button>
+        <div class="container lg:p-0 lg:flex">
         {% for item in navigation %}
             {% if page.filePathStem == item.key %}
                 {% assign activeClasses = 'underline'%}
@@ -9,13 +11,11 @@
                 {% assign activeClasses = null %}
                 {% assign currentAttribute = null %}
             {% endif %}
-            <li
-                class="p-4 {{activeClasses}}"
-                {{currentAttribute}}>
-                <a
-                    href="{{item.key}}">{{item.title}}
+            <li class="py-2 lg:px-4 lg:first:pl-0 {{activeClasses}}" {{currentAttribute}}>
+                <a href="{{item.key}}">{{item.title}}
                 </a>
             </li>
         {% endfor %}
+        </div>
     </ul>
 </nav>

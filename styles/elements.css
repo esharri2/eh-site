@@ -1,20 +1,17 @@
-h1, h2, h3, h4 {
-    @apply font-display my-4;
-}
-
-h1 {
-    @apply text-4xl;
-}
-
-h2 {
-    @apply text-3xl;
-}
-
-h3 {
-    @apply text-2xl;
-}
-
 p + p {
     @apply pt-4;
 }
+
+svg {
+    fill: currentColor;
+}
+
+button:focus-visible, a:focus-visible {
+    outline-color: currentColor;
+    outline-offset: 6px;
+}
+
+button:focus:not(:focus-visible), a:focus:not(:focus-visible) { outline: none }
+
+
 

@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" class="font-body text-dark bg-light">
+<html lang="en" class="font-body text-dark dark:text-light bg-light dark:bg-dark ">
     {% render 'head', site: site, page: page, title: title %}
     <body
         class="relative">
         {% render 'ie-notice'%}
         {% render 'skip-to-content' %}
         {% render 'back-to-top' %}
-        <header>
+        <header class="absolute flex items-center bg-dark dark:bg-light left-0 right-0 h-5">
             <div
                 class="container">
                 {% render 'navigation', navigation: navigation, page: page %}
             </div>
         </header>
         <main
-            class="min-h-screen mt-4 mb-6"
+            class="min-h-screen pt-8 mb-6"
             id="main">
             {{ content }}
         </main>

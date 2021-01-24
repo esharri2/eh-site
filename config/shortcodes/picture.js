@@ -1,5 +1,12 @@
 const Image = require("@11ty/eleventy-img");
 
+/**
+ * The eleventy-img plugin takes a while to work, 
+ * so let's skip all that image processing in development.
+ */
+const developmentFormats = ["jpeg"];
+const productionFormats = ["avif", "webp", "jpeg"];
+
 const picture = (eleventyConfig) => {
   eleventyConfig.addShortcode(
     "picture",
@@ -9,7 +16,10 @@ const picture = (eleventyConfig) => {
 
       const metadata = await Image(src, {
         widths: [300, 600, 1200, 1800],
-        formats: ["avif", "webp", "jpeg"],
+        formats:
+          process.env.ELEVENTY_ENV === "production"
+            ? productionFormats
+            : developmentFormats,
         urlPath: "/images/",
         outputDir: "./_site/images/",
       });

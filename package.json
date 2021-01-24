@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "ELEVENTY_PRODUCTION=true npm-run-all clean build:*",
-    "build:11ty": "npx @11ty/eleventy",
+    "build": "npm-run-all clean build:*",
+    "build:11ty": "ELEVENTY_ENV=production npx @11ty/eleventy",
     "build:css": "NODE_ENV=production postcss styles/main.css --o _site/main.css",
     "build:js": "NODE_ENV=production rollup --config ",
     "clean": "rm -r -f _site _temp",
     "dev": "npm-run-all -p dev:*",
-    "dev:11ty" : "npx @11ty/eleventy --serve --quiet",
+    "dev:11ty": "npx @11ty/eleventy --serve --quiet",
     "dev:css": "postcss styles/main.css --o _temp/main.css --verbose",
     "dev:js": "rollup --config --watch",
     "start": "npm run dev"
@@ -31,6 +31,7 @@
     "@11ty/eleventy-img": "^0.7.3",
     "autoprefixer": "^10.2.1",
     "cssnano": "^4.1.10",
+    "eleventy-plugin-svg-contents": "^0.7.0",
     "html-minifier": "^4.0.0",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.2.4",
@@ -44,5 +45,6 @@
     "defaults",
     "not IE 11",
     "maintained node versions"
-  ]
+  ],
+  "dependencies": {}
 }

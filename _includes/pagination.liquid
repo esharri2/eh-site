@@ -1,9 +1,6 @@
-<div
-    class="mt-4">
+<div class="mt-4">
     {% if pagination.href.previous %}
-        <a
-            href="{{pagination.href.previous}}">Previous page
-        </a>
+        <a href="{{pagination.href.previous}}">Previous</a>
     {% endif %}
     {% for href in pagination.hrefs %}
         {% assign pageNumber = pagination.pageNumber | plus: 1 %}
@@ -12,14 +9,10 @@
         {% else %}
             {% assign isCurrent = false %}
         {% endif %}
-        <a
-            class="{%if isCurrent %}underline{% endif %}"
-            href="{{href}}">{{forloop.index}}
+        <a class="{%if isCurrent %}underline{% endif %} px-1 text-center inline-block" href="{{href}}">{{forloop.index}}
         </a>
     {% endfor %}
     {% if pagination.href.next %}
-        <a
-            href="{{pagination.href.next}}">Next page
-        </a>
+        <a href="{{pagination.href.next}}">Next</a>
     {% endif %}
 </div>

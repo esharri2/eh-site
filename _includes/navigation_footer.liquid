@@ -1,16 +1,8 @@
 <nav>
-    <ul
-        class="flex">
+    <ul>
         {% for item in navigation %}
-            {% if page.filePathStem == item.key %}
-                {% assign activeClasses = 'underline'%}
-                {% assign currentAttribute = 'aria-current="page"' %}
-            {% endif %}
-            <li
-                class="p-4 {{activeClasses}}"
-                {{currentAttribute}}>
-                <a
-                    href="{{item.key}}">{{item.title}}
+            <li class=" ">
+                <a href="{{item.key}}">{{item.title}}
                 </a>
             </li>
         {% endfor %}

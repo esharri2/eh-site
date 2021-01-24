@@ -4,23 +4,15 @@ pagination:
   data: collections.post
   size: 2
   alias: posts
+  reverse: true
 ---
-<div
-    class="container">
-    <h1>{{title}}
-    </h1>
+<div class="container">
+    {% render 'h1', text: title%}
     <ul>
         {% for post in posts %}
-            <li
-                class="pt-4">
-                <a
-                    class="text-xl"
-                    href="{{post.url}}">{{post.data.title}}
-                </a>
-                <p>{% prettyDate post.data.date %}
-                    |
-                    {{post.data.description}}
-                </p>
+            <li class="pt-4">
+                <a class="text-xl" href="{{post.url}}">{% render 'h2', text: post.data.title %}</a>
+                <p>{% prettyDate post.data.date %} | {{post.data.description}}</p>
             </li>
         {% endfor %}
     </ul>

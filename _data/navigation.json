@@ -2,5 +2,6 @@
   { "key": "/", "title": "Home" },
   { "key": "/about", "title": "About" },
   { "key": "/blog", "title": "Blog" },
+  { "key": "/partials", "title": "Partials" },
   { "key": "/contact", "title": "Contact" }
 ]
