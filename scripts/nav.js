@@ -2,8 +2,9 @@ class Nav {
   selectors = {
     nav: "[data-nav]",
     linkList: "[data-nav-links]",
-    open: "[data-nav-open]",
-    close: "[data-nav-close]",
+    toggle: "[data-nav-toggle]",
+    openIcon: "[data-nav-open-icon]",
+    closeIcon: "[data-nav-close-icon]",
   };
 
   elements = {
@@ -18,26 +19,46 @@ class Nav {
     this.elements.linkList = this.elements.nav.querySelector(
       this.selectors.linkList
     );
-    this.elements.open = this.elements.nav.querySelector(this.selectors.open);
-    this.elements.close = this.elements.nav.querySelector(this.selectors.close);
+    this.elements.toggle = this.elements.nav.querySelector(
+      this.selectors.toggle
+    );
+    this.elements.openIcon = this.elements.toggle.querySelector(
+      this.selectors.openIcon
+    );
+    this.elements.closeIcon = this.elements.toggle.querySelector(
+      this.selectors.closeIcon
+    );
     this.bindEvents();
   }
 
   bindEvents() {
-    this.elements.open.addEventListener("click", this.open.bind(this));
+    this.elements.toggle.addEventListener("click", this.toggle.bind(this));
+  }
+
+  toggle() {
+    if (this.elements.toggle.getAttribute("aria-expanded") === "true") {
+      this.close();
+    } else {
+      this.open();
+    }
+  }
+
+  toggleIcons() {
+    this.elements.openIcon.classList.toggle("hidden");
+    this.elements.closeIcon.classList.toggle("hidden");
   }
 
   open() {
-    this.elements.linkList.classList.remove("sr-only");
+    this.elements.toggle.setAttribute("aria-expanded", "true");
+    this.toggleIcons();
+    this.elements.linkList.classList.remove("hidden");
     this.elements.linkList.classList.toggle("animate-fade-in");
-    this.elements.close.addEventListener("click", this.close.bind(this), {
-      once: true,
-    });
   }
 
   close() {
-    this.elements.linkList.classList.add("sr-only");
-    this.elements.linkList.classList.toggle("animate-fade-in");
+    this.elements.toggle.setAttribute("aria-expanded", "close");
+    this.toggleIcons();
+    this.elements.linkList.classList.add("hidden");
   }
 }
 
