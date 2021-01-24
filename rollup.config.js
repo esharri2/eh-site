@@ -1,4 +1,4 @@
-import { uglify } from "rollup-plugin-uglify";
+import { terser } from "rollup-plugin-terser";
 
 export default {
   input: "scripts/main.js",
@@ -6,5 +6,5 @@ export default {
     file: process.env.NODE_ENV ? "_site/main.js" : "_temp/main.js",
     format: "es",
   },
-  plugins: [process.env.NODE_ENV === "production" && uglify()],
+  plugins: [process.env.NODE_ENV === "production" && terser()],
 };

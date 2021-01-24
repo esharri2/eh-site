@@ -30,6 +30,11 @@ and the "display" font is
 [preloaded](https://www.zachleat.com/web/comprehensive-webfonts/#preload) to
 reduce [FOUT](https://www.zachleat.com/web/webfont-glossary/#fout).
 
+### Icons
+
+`_includes` contains the (Dripicons)[http://demo.amitjakhu.com/dripicons/] icon set. I'm using (
+eleventy-plugin-svg-contents)[https://github.com/brob/eleventy-plugin-svg-contents] to easily render the icons inline. 
+
 ### Images
 
 [eleventy-image](https://github.com/11ty/eleventy-img) generates multiple sizes of jpeg, webp, and avif for everything in `/images`. Use the `picture` shortcode to create a `<picture>` element that serves up the right image format based on browser support.
