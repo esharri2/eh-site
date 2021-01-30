@@ -1,6 +1,8 @@
 const colors = {
-  spaceCadet: "#2E294E",
-  babyPink: "#E8C1C5",
+  sienna: "#210203",
+  siennaDarker: "#0f0101",
+  bone: "#D9CFC1",
+  boneDarker: "#d2c6b5",
 };
 
 module.exports = {
@@ -24,27 +26,29 @@ module.exports = {
         "0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.20)",
       "3xl":
         "0 9px 12px 1px rgba(0,0,0,0.14), 0 3px 16px 2px rgba(0,0,0,0.12), 0 5px 6px -3px rgba(0,0,0,0.20)",
+      inner:
+        "inset 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.20)",
       none: "none",
     },
     colors: {
-      dark: colors.spaceCadet,
-      "dark-darkened": "#161427",
-      light: colors.babyPink,
-      "light-darkened": "#b5434f",
+      dark: colors.sienna,
+      "dark-darkened": colors.siennaDarker,
+      light: colors.bone,
+      "light-darkened": colors.boneDarker,
     },
     container: {
       center: true,
       padding: "2rem",
     },
     fontFamily: {
-      display: ["Manrope", "sans-serif"],
-      body: ["Overpass", "Helvetica", "sans-serif"],
+      display: ["Overpass", "Helvetica", "sans-serif"],
+      body: ["Manrope", "Helvetica", "sans-serif"],
     },
     screens: {
       sm: "480px",
       md: "768px",
       lg: "976px",
-      xl: "1440px",
+      xl: "1280px",
     },
     spacing: {
       0: "0",

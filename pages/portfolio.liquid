@@ -1,0 +1,81 @@
+---
+title: Portfolio
+social_links:
+  - link: https://github.com/esharri2
+    icon: github.svg
+    label: Github
+  - link: https://www.linkedin.com/in/evan-harrison/
+    icon: linkedin.svg
+    label: Linkedin
+  - link: mailto:esharri2@gmail.com
+    icon: email.svg
+    label: email
+portfolio:
+  - title: Vois
+    img: vois-screen.png
+    alt: "Screenshot of Vois app"
+    description:
+      A talking timer for yoga and exercise. A progressive web app built with
+      React, Vois allows people to build and save exercise sequences, where each
+      step is read aloud at specified times. The app uses the Web Speech API.
+    link: https://www.vois.app
+    github_link: https://github.com/sequence
+    tools:
+      - Gatsby
+      - Node
+      - React
+      - Styled Components
+  - title: Trio
+    img: trio.png
+    alt: "Screenshot of Trio app"
+    description:
+      A three piece synthesizer and visualizer. Uses the Web Audio API via
+      Tone.js and Three.js.
+    link: https://triooo.netlify.app/
+    github_link: https://github.com/trio
+    tools:
+      - Eleventy
+      - Webpack
+      - Tone.js
+      - Three.js
+  - title: Cindy Wagner Fine Art
+    img: cwfa-screen.png
+    alt: "Screenshot of Cindy Wagner Fine Art site"
+    description:
+      A website and gallery for Charlotte, NC artist Cindy Wagner. This Gatsby
+      site uses Strapi, a headless CMS, for content authoring and triggering
+      deployments.
+    link: https://www.cindywagnerfineart.com
+    github_link: https://github.com/cw-art-site
+    tools:
+      - Gatsby
+      - Node
+      - React
+---
+<div class="container">
+    {% render 'h1', text:title, classes: 'invisible' %}
+    <div class="grid gap-5 lg:gap-4 lg:grid-cols-3">
+        {% for project in portfolio %}
+            {% assign img_path = 'images/' | append: project.img %}
+            {% assign aria_label_link = "Visit the site for " | append: project.link %}
+            {% assign aria_label_link_gh = "Visit the GitHub repo for " | append: project.link %}
+            <section class="relative pb-5">
+                {% render 'h2', text: project.title, classes: "mt-0 mb-2"%}
+                <div class="flex mb-2 text-xs uppercase">
+                    <a aria-label="{{aria_label_link}}" href="{{project.link}}">View site</a>
+                    <span aria-hidden="true" class="px-1">|</span>
+                    <a aria-label="{{aria_label_link_gh}}" href="{{project.link}}">GitHub</a>
+                </div>
+                <a href="{{project.link}}" target="_blank" rel="noreferrer" class="block shadow-sm mb-4 hover:shadow-md transition-shadow">
+                    {% picture img_path project.alt  %}
+                </a>
+                <p>{{project.description}}</p>
+                <div class="flex py-1 absolute bottom-0">
+                    {% for tool in project.tools %}
+                        <span class="text-xs mr-1 mt-4 block">{{tool}}</span>
+                    {% endfor %}
+                </div>
+            </section>
+        {% endfor %}
+    </div>
+</div>

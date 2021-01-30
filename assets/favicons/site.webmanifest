@@ -1,19 +1,14 @@
 {
-    "name": "EvEleventy",
-    "short_name": "EvEleventy",
+    "name": "Evan Harrison",
+    "short_name": "EH",
     "icons": [
         {
-            "src": "/android-chrome-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "/android-chrome-512x512.png",
-            "sizes": "512x512",
+            "src": "/android-chrome-144x144.png",
+            "sizes": "144x144",
             "type": "image/png"
         }
     ],
-    "theme_color": "#2e294e",
-    "background_color": "#2e294e",
+    "theme_color": "#D9CFC1",
+    "background_color": "#D9CFC1",
     "display": "standalone"
 }

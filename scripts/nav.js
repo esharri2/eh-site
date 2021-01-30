@@ -52,7 +52,7 @@ class Nav {
     this.elements.toggle.setAttribute("aria-expanded", "true");
     this.toggleIcons();
     this.elements.linkList.classList.remove("hidden");
-    this.elements.linkList.classList.toggle("animate-fade-in");
+    // this.elements.linkList.classList.toggle("animate-fade-in");
   }
 
   close() {

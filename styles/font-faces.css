@@ -4,7 +4,17 @@
   font-weight: 400;
   font-display: swap;
   src: url("manrope-regular.woff2") format("woff2"),
-    url("Manrope-Regular.woff") format("woff");
+    url("manrope-regular.woff") format("woff");
+}
+
+/* manrope-800 - latin */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 800;
+  src: local(''),
+       url('manrope-800.woff2') format('woff2'), 
+       url('manrope-800.woff') format('woff');
 }
 
 @font-face {
@@ -14,4 +24,14 @@
   font-display: swap;
   src: local(""), url("overpass-v5-latin-regular.woff2") format("woff2"),
     url("overpass-v5-latin-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Overpass';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: local(''),
+       url('overpass-v5-latin-900.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('overpass-v5-latin-900.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }

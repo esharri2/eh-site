@@ -1,17 +1,24 @@
 p + p {
-    @apply pt-4;
+  @apply pt-3;
+}
+
+p {
+  @apply max-w-screen-md;
 }
 
 svg {
-    fill: currentColor;
+  fill: currentColor;
 }
 
-button:focus-visible, a:focus-visible {
-    outline-color: currentColor;
-    outline-offset: 6px;
+*:focus-visible {
+  outline-color: currentColor;
+  outline-offset: 6px;
 }
 
-button:focus:not(:focus-visible), a:focus:not(:focus-visible) { outline: none }
+input:focus-visible, textarea:focus-visible {
+    outline-offset: -1px;
+}
 
-
-
+*:focus:not(:focus-visible) {
+  outline: none;
+}

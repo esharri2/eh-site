@@ -3,26 +3,33 @@
         aria-controls="menuItems"
         aria-expanded="false"
         aria-label="Expand navigation"
-        class="lg:hidden text-light dark:text-dark"
+        class="fixed top-0 left-0 w-full py-2 z-10 pl-2 lg:hidden text-dark
+            dark:text-light bg-light dark:bg-dark opacity-95"
         data-nav-toggle>
         <span data-nav-open-icon>{{ '/_includes/icons/menu.svg' | svgContents:'w-3 h-3' }}</span>
         <span class="hidden" data-nav-close-icon>{{ '/_includes/icons/cross.svg' | svgContents:'w-3 h-3' }}</span>
     </button>
     <ul
-        class="hidden fixed bg-dark dark:bg-light text-light
-            dark:text-dark inset-0 top-5 px-5 lg:static lg:flex lg:p-0 "
+        class="hidden animate-fade-in fixed bg-light dark:bg-dark
+            text-dark dark:text-light inset-0 z-10 top-5 px-2 font-display
+            uppercase lg:static lg:flex lg:p-0 lg:animate-none lg:mt-3"
         data-nav-links
         id="menuItems">
         {% for item in navigation %}
             {% if page.filePathStem == item.key %}
-                {% assign activeClasses = 'underline'%}
+                {% assign classes = 'lg:border-b-2 lg:border-dashed lg:border-dark' %}
                 {% assign currentAttribute = 'aria-current="page"' %}
             {% else %}
-                {% assign activeClasses = null %}
+                {% assign classes = 'hover:translate-x-2' %}
                 {% assign currentAttribute = null %}
             {% endif %}
-            <li class="py-2 lg:px-4 lg:first:pl-0 {{activeClasses}}" {{currentAttribute}}>
-                <a href="{{item.key}}">{{item.title}}</a>
+            <li class="py-2 lg:px-4 lg:first:pl-0" {{currentAttribute}}>
+                <a class="transform transition-transform flex items-center lg:hover:translate-x-0 {{classes}}" href="{{item.key}}">
+                    {{item.title}}<span class="pl-3 text-xs italic lg:hidden">
+                        {% if currentAttribute %}&#10232; You are here
+                        {% endif %}
+                    </span>
+                </a>
             </li>
         {% endfor %}
     </ul>

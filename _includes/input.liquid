@@ -1,8 +1,8 @@
-<label class="block py-2">
-    {% assign classes = "block w-full p-1" %}
+<label class="block py-1">
+    {% assign classes = "block w-full p-1 bg-light border-dark border-b" %}
     {{label}} 
     {% if type == 'textarea'%}
-        <textarea class="{{classes}} h-8" name="{{name}}" {% if required%} required {% endif %}></textarea>
+        <textarea class="{{classes}} h-6" name="{{name}}" {% if required%} required {% endif %}></textarea>
     {% else %}
         <input class="{{classes}}" name="{{name}}" {% if required%} required {% endif %} type="{{type | default: "text"}}" />
     {% endif %}    
