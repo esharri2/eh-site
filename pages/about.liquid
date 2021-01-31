@@ -19,7 +19,7 @@ social_links:
     <ul class="flex">
         {% for social in social_links%}
             {% assign icon = '/_includes/icons/' | append: social.icon%}
-            <a class="flex text-xs uppercase flex-col justify-center items-center mr-2 transition-all hover:text-dark-darkened border-opacity-0 border-b-2 border-dashed border-dark hover:border-opacity-100" href="{{social.link}}">{{icon | svgContents:'w-3 h-3'}}<span class="mt-1">{{social.label}}</span>
+            <a class="flex text-xs uppercase flex-col justify-center items-center mr-2 transition-all border-opacity-0 border-b-2 border-dashed border-dark dark:border-light hover:border-opacity-100" href="{{social.link}}">{{icon | svgContents:'w-3 h-3'}}<span class="mt-1">{{social.label}}</span>
             </a>
         {% endfor %}
     </ul>
