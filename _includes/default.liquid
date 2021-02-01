@@ -4,11 +4,11 @@
         dark:bg-dark "
     lang="en">
     {% render 'head', site: site, page: page, title: title %}
-    <body class="relative">
+    <body class="relative min-h-screen">
         {% render 'ie-notice'%}
         {% render 'skip-to-content' %}
         {% render 'back-to-top' %}
-        <header class="container pt-8">
+        <header class="container pt-10vh">
             <a href="/">
                 <h1 class="uppercase font-extrabold text-4xl mb-1 mt-4
                     font-display">{{site.title}}</h1>
@@ -18,7 +18,7 @@
             {% render 'navigation', navigation: navigation, page: page %}
             <!-- </div> -->
         </header>
-        <main class="min-h-screen mb-6" id="main">
+        <main class="mb-6" id="main">
             {{ content }}
         </main>
         {% comment %}

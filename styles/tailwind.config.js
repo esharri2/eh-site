@@ -60,6 +60,7 @@ module.exports = {
       6: "6rem",
       7: "8rem",
       8: "10rem",
+      "10vh": "10vh",
     },
     extend: {
       animation: {
