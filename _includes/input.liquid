@@ -4,6 +4,6 @@
     {% if type == 'textarea'%}
         <textarea class="{{classes}} h-6" name="{{name}}" {% if required%} required {% endif %}></textarea>
     {% else %}
-        <input class="{{classes}}" name="{{name}}" {% if required%} required {% endif %} type="{{type | default: "text"}}" />
+        <input class="{{classes}}" name="{{name}}" {% if placeholder %}placeholder="{{placeholder}}" {% endif %} {% if required%} required {% endif %} type="{{type | default: "text"}}" />
     {% endif %}    
 </label>

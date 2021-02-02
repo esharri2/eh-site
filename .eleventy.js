@@ -20,6 +20,7 @@ module.exports = function (eleventyConfig) {
     dir: {
       data: "../_data",
       includes: "../_includes",
+      layouts: "../_layouts",
       input: "./pages",
     },
   };

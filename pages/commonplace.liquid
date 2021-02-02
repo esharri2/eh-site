@@ -1,0 +1,46 @@
+---
+title: Commonplace
+displayTitle: Commonplace book
+pagination:
+  data: collections.commonplace
+  size: 2
+  alias: quotes
+  reverse: true
+---
+<div class="container">
+    {% render 'h1', text: displayTitle%}
+    {% for quote in quotes %}
+        {% assign date = quote.data.date%}
+        {% assign name = quote.data.name %}
+        {% assign url = quote.data.url %}
+        {% assign title = quote.data.title %}
+        {% assign publication = quote.data.publication %}
+        {% assign content = quote.templateContent %}
+        <figure class="py-4 max-w-screen-md">
+            <div class="text-xs uppercase text-right pb-2">Posted {% prettyDate date %}</div>
+            <blockquote {% if url%} cite="{{url}}" {% endif %}>
+                {{content}}
+            </blockquote>
+            <figcaption>
+                <span>{{name}}</span>
+                {% if title or publication %}
+                    <span>, </span>
+                    <cite class="not-italic">
+                        {% if title %}
+                            <span>"{{title}}"</span>
+                        {% endif %}
+                        {% if title and publication %}, {% endif %}
+                        {% if publication %}
+                            <span class="italic">{{publication}}</span>
+                        {% endif %}
+                    </cite>
+                {% endif %}
+                {% if quote.data.source %}
+                    ,
+                    <cite {% unless quote.data.italic == false %} class="italic" {% endunless %}>{{quote.data.source}}</cite>
+                {% endif %}
+            </figcaption>
+        </figure>
+    {% endfor %}
+    {% render 'pagination', pagination: pagination %}
+</div> 

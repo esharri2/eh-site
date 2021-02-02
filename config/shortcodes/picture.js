@@ -37,7 +37,7 @@ const picture = (eleventyConfig) => {
         })
         .join("\n")}
         <img
-          class="min-w-full h-auto"
+          class="min-w-full"
           src="${lowsrc.url}"
           alt="${alt}"
           height="${lowsrc.height}"
