@@ -17,23 +17,26 @@ pagination:
         {% assign publication = quote.data.publication %}
         {% assign content = quote.templateContent %}
         <figure class="py-4 max-w-screen-md">
-            <div class="text-xs uppercase text-right pb-2">Posted {% prettyDate date %}</div>
+            <div class="text-xs uppercase text-right pb-2">Posted
+            {% prettyDate date %}</div>
             <blockquote {% if url%} cite="{{url}}" {% endif %}>
                 {{content}}
             </blockquote>
-            <figcaption>
+            <figcaption class="pt-2 text-right">
                 <span>{{name}}</span>
                 {% if title or publication %}
-                    <span>, </span>
-                    <cite class="not-italic">
-                        {% if title %}
-                            <span>"{{title}}"</span>
-                        {% endif %}
-                        {% if title and publication %}, {% endif %}
-                        {% if publication %}
-                            <span class="italic">{{publication}}</span>
-                        {% endif %}
-                    </cite>
+                    <div>
+                        <cite class="not-italic">
+                            {% if title %}
+                                <span>"{{title}}"</span>
+                            {% endif %}
+                            {% if title and publication %},
+                            {% endif %}
+                            {% if publication %}
+                                <span class="italic">{{publication}}</span>
+                            {% endif %}
+                        </cite>
+                    </div>
                 {% endif %}
                 {% if quote.data.source %}
                     ,
