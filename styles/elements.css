@@ -6,13 +6,6 @@ p {
   @apply max-w-screen-md;
 }
 
-img[width] {
-  @apply w-auto;
-}
-img[width][height] {
-  @apply h-auto;
-}
-
 svg {
   fill: currentColor;
 }
