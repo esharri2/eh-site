@@ -3,47 +3,55 @@ title: Commonplace
 displayTitle: Commonplace book
 pagination:
   data: collections.commonplace
-  size: 2
+  size: 10
   alias: quotes
   reverse: true
 ---
 <div class="container">
     {% render 'h1', text: displayTitle%}
     {% for quote in quotes %}
-        {% assign date = quote.data.date%}
-        {% assign name = quote.data.name %}
-        {% assign url = quote.data.url %}
-        {% assign title = quote.data.title %}
-        {% assign publication = quote.data.publication %}
-        {% assign content = quote.templateContent %}
-        <figure class="py-4 max-w-screen-md">
-            <div class="text-xs uppercase text-right pb-2">Posted
-            {% prettyDate date %}</div>
-            <blockquote {% if url%} cite="{{url}}" {% endif %}>
-                {{content}}
-            </blockquote>
-            <figcaption class="pt-2 text-right">
-                <span>{{name}}</span>
-                {% if title or publication %}
-                    <div>
-                        <cite class="not-italic">
-                            {% if title %}
-                                <span>"{{title}}"</span>
-                            {% endif %}
-                            {% if title and publication %},
-                            {% endif %}
-                            {% if publication %}
-                                <span class="italic">{{publication}}</span>
-                            {% endif %}
-                        </cite>
-                    </div>
-                {% endif %}
-                {% if quote.data.source %}
-                    ,
-                    <cite {% unless quote.data.italic == false %} class="italic" {% endunless %}>{{quote.data.source}}</cite>
-                {% endif %}
-            </figcaption>
-        </figure>
+        <section class="pt-4 pb-6 max-w-screen-md">
+            {% assign date = quote.data.date%}
+            {% if quote.data.embed_url %}
+                <div class="text-xs uppercase text-right pb-2">Posted
+                {% prettyDate date %}</div>
+                {% render 'youtube-embed', embed_url: quote.data.embed_url%}
+            {% else %}
+                {% assign name = quote.data.name %}
+                {% assign url = quote.data.url %}
+                {% assign title = quote.data.title %}
+                {% assign publication = quote.data.publication %}
+                {% assign content = quote.templateContent %}
+                <figure>
+                    <div class="text-xs uppercase text-right pb-2">Posted
+                    {% prettyDate date %}</div>
+                    <blockquote {% if url%} cite="{{url}}" {% endif %}>
+                        {{content}}
+                    </blockquote>
+                    <figcaption class="pt-2 text-right">
+                        <span>{{name}}</span>
+                        {% if title or publication %}
+                            <div>
+                                <cite class="not-italic">
+                                    {% if title %}
+                                        <span>"{{title}}"</span>
+                                    {% endif %}
+                                    {% if title and publication %},
+                                    {% endif %}
+                                    {% if publication %}
+                                        <span class="italic">{{publication}}</span>
+                                    {% endif %}
+                                </cite>
+                            </div>
+                        {% endif %}
+                        {% if quote.data.source %}
+                            ,
+                            <cite {% unless quote.data.italic == false %} class="italic" {% endunless %}>{{quote.data.source}}</cite>
+                        {% endif %}
+                    </figcaption>
+                </figure>
+            {% endif %}
+        </section>
     {% endfor %}
     {% render 'pagination', pagination: pagination %}
 </div> 
