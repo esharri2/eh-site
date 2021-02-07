@@ -10,7 +10,7 @@ pagination:
 <div class="container">
     {% render 'h1', text: displayTitle%}
     {% for quote in quotes %}
-        <section class="pt-4 pb-6 max-w-screen-md">
+        <section class="py-4 lg:pb-6 max-w-screen-md">
             {% assign date = quote.data.date%}
             {% if quote.data.embed_url %}
                 <div class="text-xs uppercase text-right pb-2">Posted

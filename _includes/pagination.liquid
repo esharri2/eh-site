@@ -4,6 +4,7 @@
             <a href="{{pagination.href.previous}}">Previous</a>
         {% endif %}
         {% for href in pagination.hrefs %}
+        {{href}}
             {% assign pageNumber = pagination.pageNumber | plus: 1 %}
             {% if forloop.index == pageNumber %}
                 {% assign isCurrent = true %}
