@@ -1,3 +1,10 @@
-<button class="bg-dark dark:bg-light text-light dark:text-dark px-4 py-1 mt-2 hover:bg-dark-darkened dark:hover:bg-light-darkened transition-colors uppercase {{classes}}" type="{{type | default: "button"}}">
-    {{label}}
-</button>
+{% assign class = 'inline-flex bg-dark dark:bg-light text-light dark:text-dark px-4 py-1 mt-2 hover:bg-dark-darkened dark:hover:bg-light-darkened transition-colors uppercase {{classes}}' %}
+{% capture contents %}
+  {{label}}{{icon}}
+{% endcapture %}
+
+{% if href %}
+    <a class="{{class}}" href="{{href}}">{{contents}}</a>
+{% else %}
+    <button class="{{class}}" type="{{type | default: "button"}}">{{contents}}</button>
+{% endif %}

@@ -1,22 +1,19 @@
----
-title: Blog
-pagination:
-  data: collections.post
-  size: 5
-  alias: posts
-  reverse: true
+---js
+{
+  title: 'Blog',
+  pagination: {
+    data: 'collections.post',
+    size: 4,
+    alias: 'posts',
+    reverse: true,
+    before: function(data) {
+      return data.filter((item) => item.data.permalink !== false);
+    }
+  }
+}
 ---
 <div class="container">
     {% render 'h1', text: title %}
-    <ul>
-        {% for post in posts %}
-            {% unless post.url == false %}
-            <li class="pb-4">
-                <a class="text-xl" href="{{post.url}}">{% render 'h2', text: post.data.title %}</a>
-                <p>{% prettyDate post.data.date %} | {{post.data.description}}</p>
-            </li>
-            {% endunless %}
-        {% endfor %}
-    </ul>
+    {% render 'bloglist', posts: posts%}
     {% render 'pagination', pagination: pagination %}
 </div> 

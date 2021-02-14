@@ -1,0 +1,11 @@
+    <ul class="max-w-sm">
+        {% for post in posts %}
+            {% unless post.url == false %}
+            <li class="pb-3">
+                <a href="{{post.url}}">{% render 'h2', text: post.data.title, classes:'mb-1' %}</a>
+                <p class="text-xs uppercase">{% prettyDate post.data.date %}</p>
+                <p class="pt-1 italic">{{post.data.description}}</p>
+            </li>
+            {% endunless %}
+        {% endfor %}
+    </ul>

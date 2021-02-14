@@ -2,6 +2,7 @@
 title: How to create accessible and reusable tooltips components test tet test lfdjadflk
 date: 2010-11-01
 description: This is the first post.
+permalink: false
 ---
 
 ## Example: Paragraphs
