@@ -1,0 +1,60 @@
+{%- capture title -%}
+    {% if page_title and page.url != "/" %}{{page_title}} | {% endif %} {{ site_title }}
+{%- endcapture -%}
+{% assign description = page_description | default: site_description %}
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width initial-scale=1">
+<title>{{title}}</title>
+{% if author %}
+    <meta name="author" content="{{author}}">
+{% endif %}
+<meta name="description" content="{{description}}">
+<meta property="og:title" content="{{title}}">
+<meta property="og:type" content="website">
+<meta property="og:description" content="{{description}}">
+<meta property="og:url" content="{{domain}}">
+{% if domain and meta_image %}
+    <meta property="og:image" content="{{domain}}/images/{{meta_image}}">
+{% endif %}
+{% if meta_image_alt %}
+    <meta property="og:image:alt" content="{{meta_image_alt}}">
+{% endif %}
+<meta name="twitter:card" content="summary">
+{% if twitter_handle %}
+    <meta name="twitter:site" content="{{twitter_handle}}">
+{% endif %}
+<meta name="twitter:title" content="{{title}}">
+<meta name="twitter:description" content="{{description}}">
+{% if domain and meta_image %}
+    <meta name="twitter:image" content="{{domain}}/images/{{meta_image}}">
+{% endif %}
+{% if meta_image_alt %}
+    <meta name="twitter:image:alt" content="{{meta_image_alt}}">
+{% endif %}
+{% comment %}todo - fix this canonical link{% endcomment %}
+<link rel="canonical" href="{{domain}}">
+<meta content="{{theme_color}}" name="msapplication-TileColor">
+<meta content="{{theme_Color}}" name="theme-color">
+
+{% comment %} Icons {% endcomment %}
+<link
+    href="/apple-touch-icon.png"
+    rel="apple-touch-icon"
+    sizes="180x180">
+<link
+    href="/favicon-32x32.png"
+    rel="icon"
+    sizes="32x32"
+    type="image/png">
+<link
+    href="/favicon-16x16.png"
+    rel="icon"
+    sizes="16x16"
+    type="image/png">
+<link href="/webmanifest" rel="manifest">
+<link
+    color="#5bbad5"
+    href="/safari-pinned-tab.svg"
+    rel="mask-icon">

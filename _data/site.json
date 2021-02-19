@@ -1,9 +1,10 @@
 {
   "title": "Evan Harrison",
-  "description": "Web developer and writer living in Raleigh, NC",
+  "description": "Personal website of Evan Harrison, web developer and writer living in Raleigh, NC",
+  "author": "Evan Harrison",
   "builtBy": {
     "name": "EH",
     "url": "https://www.evan-harrison.com"
   },
-  "domain": "https://www.evan-harrison.com/"
+  "domain": "https://www.evan-harrison.com"
 }

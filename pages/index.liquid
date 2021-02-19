@@ -19,5 +19,7 @@
     {% capture icon %}
         {{ '/_includes/icons/arrow-thin-right.svg' | svgContents:'ml-3 w-3 h-3' }}
     {% endcapture %}
-    {% render 'button', label: "View all blogs", href: "/blog", icon: icon %}
+    {% if posts.size > 4 %}
+      {% render 'button', label: "View all blogs", href: "/blog", icon: icon %}
+    {% endif %}
 </div>

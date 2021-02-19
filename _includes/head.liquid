@@ -1,50 +1,19 @@
 <head>
-    <meta charset="utf-8">
-    <meta
-        content="width=device-width, initial-scale=1"
-        name="viewport">
-    <title>{{title}}
-        {% if title %}
-            |
-        {% endif %}
-        {{ site.title }}
-    </title>
-    <meta name="description" content="{{ site.description }}" />
-    <meta charset="utf-8" />
-    <meta
-        content="width=device-width, initial-scale=1.0"
-        name="viewport" />
-    <link
-        href="/apple-touch-icon.png"
-        rel="apple-touch-icon"
-        sizes="180x180">
-    <link
-        href="/favicon-32x32.png"
-        rel="icon"
-        sizes="32x32"
-        type="image/png">
-    <link
-        href="/favicon-16x16.png"
-        rel="icon"
-        sizes="16x16"
-        type="image/png">
-    <link href="/site.webmanifest" rel="manifest">
-    <link
-        color="#5bbad5"
-        href="/safari-pinned-tab.svg"
-        rel="mask-icon">
-    <meta content="#210203" name="msapplication-TileColor">
-    <meta content="#210203" name="theme-color">
-     <link
-        as="font"
-        crossorigin
-        href="/overpass-v5-latin-900.woff2"
-        rel="preload"
-        type="font/woff2" />
+    {% render 'meta',
+        page_title: title,
+        site_title: site.title,
+        page_description: description,
+        site_description: site.description,
+        author: site.author,
+        domain: site.domain,
+        meta_image: site.meta_image,
+        meta_image_alt: site.meta_image_alt,
+        page_url: page.url,
+    %}
     <link
         as="font"
         crossorigin
-        href="/overpass-v5-latin-regular.woff2"
+        href="/manrope-regular.woff2"
         rel="preload"
         type="font/woff2" />
     <link href="/main.css" rel="stylesheet" type="text/css" />
