@@ -17,5 +17,11 @@
         rel="preload"
         type="font/woff2" />
     <link href="/main.css" rel="stylesheet" type="text/css" />
+        {% capture js %}
+        {% include "colorSet.js" %}
+    {% endcapture %}
+    <script>
+        {{ js | jsmin }}
+    </script>
     <script defer src="/main.js"></script>
 </head>

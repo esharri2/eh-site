@@ -1,10 +1,12 @@
 const addShortCodes = require("./config/shortcodes");
 const addPassThroughCopies = require("./config/passthroughs");
 const addTransforms = require("./config/transforms");
+const addFilters = require("./config/filters");
 const svgContents = require("eleventy-plugin-svg-contents");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 module.exports = function (eleventyConfig) {
+  addFilters(eleventyConfig);
   addPassThroughCopies(eleventyConfig);
   addShortCodes(eleventyConfig);
   addTransforms(eleventyConfig);

@@ -6,7 +6,7 @@ const colors = {
 };
 
 module.exports = {
-  darkMode: "media",
+  darkMode: "class",
   purge: {
     content: ["./_site/**/*.html"],
   },

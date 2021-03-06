@@ -1,0 +1,16 @@
+{%- capture classes -%}
+font-display leading-snug mt-5 mb-3 lg:mb-4
+{% unless sentence_case %} uppercase {% endunless %}
+{% unless visible %} lg:invisible {% endunless %}
+
+{%- endcapture -%}
+
+{% if level == 1 %}
+    <h1 class="text-4xl {% if visible %}lg:text-5xl {% else %} lg:text-xs {% endif %} {{classes}}">{{text}}</h1>
+{% elsif level == 2 %}
+    <h2 class="{{classes}}">{{text}}</h2>
+{% elsif level == 3 %}
+    <h3 class="{{classes}}">{{text}}</h3>
+{% elsif level == 4 %}
+    <h4 class="{{classes}}">{{text}}</h4>
+{% endif %}

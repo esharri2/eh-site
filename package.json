@@ -10,7 +10,7 @@
     "build:js": "NODE_ENV=production rollup --config ",
     "clean": "rm -r -f _site _temp",
     "dev": "npm-run-all -p dev:*",
-    "dev:11ty": "npx @11ty/eleventy --serve --quiet",
+    "dev:11ty": "ELEVENTY_ENV=development npx @11ty/eleventy --serve --quiet",
     "dev:css": "postcss styles/main.css --o _temp/main.css --verbose",
     "dev:js": "rollup --config --watch",
     "start": "npm run dev"

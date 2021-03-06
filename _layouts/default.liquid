@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html
-    class="font-body text-dark dark:text-light bg-light
-        dark:bg-dark "
-    lang="en">
+<html lang="en">
     {% render 'head', site: site, page: page, title: title %}
-    <body class="relative min-h-screen">
+    <body class="relative min-h-screen font-body text-dark
+            dark:text-light bg-light dark:bg-dark ">
         {% render 'ie-notice'%}
         {% render 'skip-to-content' %}
         {% render 'back-to-top' %}
+        <div class="flex justify-end">
+            {% include 'color-switch' %}
+        </div>
         <header class="container pt-10vh">
             <a href="/">
                 <h1 class="uppercase font-extrabold text-4xl mb-1 mt-4

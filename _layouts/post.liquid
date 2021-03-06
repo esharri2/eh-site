@@ -24,10 +24,10 @@ layout: default
 
 
 <article class="container pb-4 lg:pt-4">
-    {% render 'h1', text: title, visible: true, sentence_case: true, classes:"max-w-xl" %}
+    {% render 'heading', level: 1, text: title, sentence_case: true%}
     <p class="text-xs uppercase">{% prettyDate date %}</p>
     <p class="py-2 italic text-lg">{{description}}</p>
-    <div class="md max-w-prose text-dark dark:text-light">
+    <div class="md text-dark dark:text-light">
         {{content}}
         {{click_to_copy}}
     </div>

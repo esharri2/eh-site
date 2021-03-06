@@ -8,7 +8,7 @@ pagination:
   reverse: true
 ---
 <div class="container">
-    {% render 'h1', text: displayTitle%}
+    {% render 'heading', level: 1, text: displayTitle %}
     {% for quote in quotes %}
         <section class="py-4 lg:pb-6 max-w-screen-md">
             {% assign date = quote.data.date%}
