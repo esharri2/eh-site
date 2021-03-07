@@ -6,10 +6,6 @@
     }
 }
 
-p, ul, table, blockquote {
-  @apply max-w-screen-md;
-}
-
 svg {
   fill: currentColor;
 }
