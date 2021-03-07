@@ -53,12 +53,12 @@ blockquote > * + * {
 
 .md ul ul,
 .md ol ul {
-  @apply ml-1;
+  @apply mt-1 ml-3;
 }
 
 .md ol ol,
 .md ul ol {
-  @apply ml-1;
+  @apply mt-1 ml-3;
 }
 
 /* LINKS */
