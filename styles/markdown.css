@@ -1,63 +1,103 @@
-@import "syntax-highlighting.css";
+/* GLOBAL */
 
-.md h2, h3, h4, h5 {
-   @apply font-display my-4 text-2xl;
+/* via https://piccalil.li/quick-tip/flow-utility */
+.md > * + *,
+blockquote > * + * {
+  margin-top: var(--flow-space, 1em);
+}
+
+/* HEADINGS */
+
+.md h1,
+.md h2,
+.md h3,
+.md h4 {
+  @apply font-display leading-snug;
+}
+
+.md h1 {
+  @apply text-5xl;
+}
+
+.md h2 {
+  @apply text-4xl;
 }
 
 .md h3 {
-    @apply text-xl;
+  @apply text-3xl italic;
 }
 
 .md h4 {
-    @apply text-lg italic;
+  @apply text-2xl;
+}
+
+/* LISTS */
+
+.md ul,
+.md ol {
+  @apply block list-disc list-inside;
+}
+
+.md ol {
+  @apply list-decimal;
+}
+
+.md li {
+  @apply mb-1;
+}
+
+.md li > p {
+  /* Fix for p inside li */
+  @apply inline;
+}
+
+.md ul ul,
+.md ol ul {
+  @apply ml-1;
+}
+
+.md ol ol,
+.md ul ol {
+  @apply ml-1;
+}
+
+/* LINKS */
+
+.md a {
+  @apply underline;
+}
+
+/* BLOCKQUOTES */
+
+.md blockquote {
+  @apply bg-dark text-light dark:bg-light dark:text-dark my-4 mx-2 p-2;
 }
 
 .md blockquote {
-    @apply border-l border-dark-darkened dark:border-light-darkened bg-dark text-light dark:bg-light dark:text-dark my-4 mx-2 p-2;
-}
-
-.md > ul {
-  margin: 1rem 0;
-}
-
-.md ul, .md ol { 
-    display: block;
-    list-style: disc outside none;
-    padding: 0 0 0 1rem;
-}
-.md ol { 
-    list-style-type: decimal;
-}
-
-.md li { 
-    display: list-item;
-}
-
-.md ul ul, .md ol ul {
-    list-style-type: circle;
-    margin-left: 1rem; 
-}
-.md ol ol, .md ul ol { 
-    list-style-type: lower-latin;
-    margin-left: 1rem; 
-}
-
-.md a {
-  text-decoration: underline;
-}
-
-/* blockquote {
   quotes: "\201C""\201D""\2018""\2019";
 }
-blockquote:before {
-  color: inherit;
+
+.md blockquote:before {
+  @apply text-current;
   content: open-quote;
   font-size: 4em;
   line-height: 0.1em;
   margin-right: 0.25em;
   vertical-align: -0.4em;
 }
-blockquote p:first-child {
-  display: inline;
-} */
 
+.md blockquote p:first-child {
+  @apply inline;
+}
+
+/* TABLES */
+.md table {
+  border-collapse: collapse;
+}
+.md tr {
+  @apply border-b border-dark dark:border-light;
+}
+.md th,
+.md td {
+  @apply text-left p-1;
+}

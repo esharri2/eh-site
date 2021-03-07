@@ -1,5 +1,5 @@
 ---
-title: How to create accessible and reusable tooltips components test tet test lfdjadflk
+title: My First Post
 date: 2010-11-01
 description: This is the first post.
 permalink: false
@@ -49,7 +49,7 @@ id sem consectetuer libero luctus adipiscing.
 
 ## Example: Lists
 
-Unordered
+### Unordered list
 
 + Create a list by starting a line with `+`, `-`, or `*`
 + Sub-lists are made by indenting 2 spaces:
@@ -59,22 +59,18 @@ Unordered
     - Nulla volutpat aliquam velit
 + Very easy!
 
-Ordered
+### Ordered list
 
 1. Lorem ipsum dolor sit amet
-2. Consectetur adipiscing elit
-3. Integer molestie lorem at massa
-
-
-1. You can use sequential numbers...
-1. ...or keep all the numbers as `1.`
+1. Consectetur adipiscing elit
+1. Integer molestie lorem at massa
 
 Start numbering with offset:
 
 57. foo
 1. bar
 
-## Tables
+## Example: Tables
 
 | Option | Description |
 | ------ | ----------- |
@@ -91,7 +87,7 @@ Right aligned columns
 | ext    | extension to be used for dest files. |
 
 
-## Links
+## Example: Links
 
 [link text](http://dev.nodeca.com)
 
@@ -100,16 +96,7 @@ Right aligned columns
 Autoconverted link https://github.com/nodeca/pica (enable linkify to see)
 
 
-## Images
+## Example: Images
 
-![Minion](https://octodex.github.com/images/minion.png)
-![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
+![A black dog](https://picsum.photos/id/237/900/600)
 
-## Code
-
-``` js
-const test = () => {
-  alert("test!");
-}
-console.log('what up');
-```
