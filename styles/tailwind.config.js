@@ -35,6 +35,7 @@ module.exports = {
       "dark-darkened": colors.siennaDarker,
       light: colors.bone,
       "light-darkened": colors.boneDarker,
+      current: "currentColor",
     },
     container: {
       center: true,
