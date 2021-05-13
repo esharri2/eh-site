@@ -65,14 +65,14 @@ portfolio:
       - React
 ---
 <div class="container">
-    {% render 'heading', level: 1, text: title %}
+    {% include 'heading', level: 1, text: title %}
     <div class="grid gap-5 lg:gap-4 lg:grid-cols-3">
         {% for project in portfolio %}
             {% assign img_path = 'images/' | append: project.img %}
             {% assign aria_label_link = "Visit the site for " | append: project.link %}
             {% assign aria_label_link_gh = "Visit the GitHub repo for " | append: project.link %}
             <section class="relative pb-5">
-                {% render 'h2', text: project.title, classes: "mt-0 mb-2"%}
+                {% include 'h2', text: project.title, classes: "mt-0 mb-2"%}
                 <div class="flex mb-2 text-xs uppercase">
                     <a aria-label="{{aria_label_link}}" href="{{project.link}}">View site</a>
                     <span aria-hidden="true" class="px-1">|</span>

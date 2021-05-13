@@ -2,12 +2,12 @@
 title: Partials
 ---
 <div class="container">
-    {% render 'heading', level: 1, text: 'Heading 1' %}
-    {% render 'heading', level: 2, text: 'Heading 2' %}
-    {% render 'heading', level: 3, text: 'Heading 3' %}
-    {% render 'heading', level: 4, text: 'Heading 4' %}
+    {% include 'heading', level: 1, text: 'Heading 1' %}
+    {% include 'heading', level: 2, text: 'Heading 2' %}
+    {% include 'heading', level: 3, text: 'Heading 3' %}
+    {% include 'heading', level: 4, text: 'Heading 4' %}
 
-    {% render 'button', label: "A button"%}
+    {% include 'button', label: "A button"%}
     <div class="my-4">
         {% picture 'images/beach.JPG' 'A beach pic' %}
     </div>

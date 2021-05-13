@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-    {% render 'head', site: site, page: page, title: title %}
+    {% include 'head', site: site, page: page, title: title %}
     <body class="relative min-h-screen font-body text-dark
             dark:text-light bg-light dark:bg-dark ">
-        {% render 'ie-notice'%}
-        {% render 'skip-to-content' %}
-        {% render 'back-to-top' %}
+        {% include 'ie-notice'%}
+        {% include 'skip-to-content' %}
+        {% include 'back-to-top' %}
         <div class="z-10 flex justify-end">
             {% include 'color-switch' %}
         </div>
@@ -16,14 +16,14 @@
             </a>
             <p>Web Developer<span aria-hidden="true" class="px-1 lg:px-2">+</span>Raleigh, NC</p>
             <!-- <div class="container"> -->
-            {% render 'navigation', navigation: navigation, page: page %}
+            {% include 'navigation', navigation: navigation, page: page %}
             <!-- </div> -->
         </header>
         <main class="mb-6 leading-relaxed	" id="main">
             {{ content }}
         </main>
         {% comment %}
-        {% render 'footer', builtBy: site.builtBy, navigation: navigation_footer %}
+        {% include 'footer', builtBy: site.builtBy, navigation: navigation_footer %}
         {% endcomment %}
     </body>
 </html>

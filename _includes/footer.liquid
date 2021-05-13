@@ -1,6 +1,6 @@
 <footer class="border-t border-black border-solid p-4">
     <div class="container">
-        {% render 'navigation_footer', navigation: navigation%}
+        {% include 'navigation_footer', navigation: navigation%}
         <p class="text-xs mt-2">Copyright {% currentYear %}</p>
         <p class="py-1 text-xs">
             <a class="underline" href="{{builtBy.url}}">Site by {{builtBy.name}}</a>

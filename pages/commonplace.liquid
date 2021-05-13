@@ -8,14 +8,14 @@ pagination:
   reverse: true
 ---
 <div class="container">
-    {% render 'heading', level: 1, text: displayTitle %}
+    {% include 'heading', level: 1, text: displayTitle %}
     {% for quote in quotes %}
         <section class="py-4 lg:pb-6 max-w-screen-md">
             {% assign date = quote.data.date%}
             {% if quote.data.embed_url %}
                 <div class="text-xs uppercase text-right pb-2">Posted
                 {% prettyDate date %}</div>
-                {% render 'youtube-embed', embed_url: quote.data.embed_url%}
+                {% include 'youtube-embed', embed_url: quote.data.embed_url%}
             {% else %}
                 {% assign name = quote.data.name %}
                 {% assign url = quote.data.url %}
@@ -53,5 +53,5 @@ pagination:
             {% endif %}
         </section>
     {% endfor %}
-    {% render 'pagination', pagination: pagination %}
+    {% include 'pagination', pagination: pagination %}
 </div> 

@@ -13,7 +13,7 @@
 }
 ---
 <div class="container">
-    {% render 'heading', level: 1, text: title %}
-    {% render 'bloglist', posts: posts%}
-    {% render 'pagination', pagination: pagination %}
+    {% include 'heading', level: 1, text: title %}
+    {% include 'bloglist', posts: posts%}
+    {% include 'pagination', pagination: pagination %}
 </div> 

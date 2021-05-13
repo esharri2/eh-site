@@ -13,9 +13,9 @@ social_links:
 
 ---
 <div class="container">
-    {% render 'heading', level: 1, text: title %}
+    {% include 'heading', level: 1, text: title %}
     <p class="max-w-screen-md">I am a web developer in Raleigh, North Carolina. I mostly work on big websites for big companies. But I also enjoy building small, impactful sites for people who are doing and making cool things. I try to develop sites and applications with a user-first mindset so that the final result is accessible, performant, pleasing, and powerful.</p>
-    {% render 'h2', text: 'Follow me on:'%}
+    {% include 'h2', text: 'Follow me on:'%}
     <ul class="flex">
         {% for social in social_links%}
             {% assign icon = '/_includes/icons/' | append: social.icon%}
