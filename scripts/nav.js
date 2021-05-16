@@ -52,13 +52,14 @@ class Nav {
     this.elements.toggle.setAttribute("aria-expanded", "true");
     this.toggleIcons();
     this.elements.linkList.classList.remove("hidden");
-    // this.elements.linkList.classList.toggle("animate-fade-in");
+    document.querySelector("body").classList.add("overflow-hidden");
   }
 
   close() {
     this.elements.toggle.setAttribute("aria-expanded", "close");
     this.toggleIcons();
     this.elements.linkList.classList.add("hidden");
+    document.querySelector("body").classList.remove("overflow-hidden");
   }
 }
 
