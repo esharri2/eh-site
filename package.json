@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm-run-all clean build:*",
+    "build": "NODE_ENV=production npm-run-all clean build:*",
     "build:11ty": "ELEVENTY_ENV=production npx @11ty/eleventy",
     "build:css": "NODE_ENV=production postcss styles/main.css --o _site/main.css",
     "build:js": "NODE_ENV=production rollup --config ",
