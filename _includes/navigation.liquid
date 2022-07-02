@@ -26,7 +26,7 @@
             <li class="py-2 lg:px-4 lg:first:pl-0" {{currentAttribute}}>
                 <a class="transform transition-transform flex items-center lg:hover:translate-x-0 {{classes}}" href="{{item.key}}">
                     {{item.title}}<span class="pl-3 text-xs italic lg:hidden">
-                        {% if currentAttribute %}&#10232; You are here
+                        {% if currentAttribute != null %}&#10232; You are here
                         {% endif %}
                     </span>
                 </a>

@@ -1,6 +1,5 @@
 [
   { "key": "/about", "title": "About" },
   { "key": "/portfolio", "title": "Portfolio" },
-  { "key": "/commonplace", "title": "Commonplace" },
   { "key": "/contact", "title": "Contact" }
 ]

@@ -19,6 +19,10 @@ module.exports = function (eleventyConfig) {
     strict_filters: true,
   });
   eleventyConfig.setUseGitIgnore(false);
+  // Not using right now!
+  eleventyConfig.ignores.add("./pages/blog.liquid");
+  eleventyConfig.ignores.add("./pages/commonplace.liquid");
+
   return {
     dir: {
       data: "../_data",
