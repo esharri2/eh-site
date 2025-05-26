@@ -1,5 +1,8 @@
 ---
 title: Portfolio
+description: A selection of web projects and sites
+eleventyNavigation:
+  key: portfolio
 social_links:
   - link: https://github.com/esharri2
     icon: github.svg
@@ -63,30 +66,32 @@ portfolio:
       - Node
       - React
 ---
-<div class="container">
-    {% include 'heading', level: 1, text: title %}
-    <div class="grid gap-5 lg:gap-4 lg:grid-cols-3">
-        {% for project in portfolio %}
-            {% assign img_path = 'images/' | append: project.img %}
-            {% assign aria_label_link = "Visit the site for " | append: project.link %}
-            {% assign aria_label_link_gh = "Visit the GitHub repo for " | append: project.link %}
-            <section class="relative pb-5">
-                {% include 'h2', text: project.title, classes: "mt-0 mb-2"%}
-                <div class="flex mb-2 text-xs uppercase">
-                    <a aria-label="{{aria_label_link}}" href="{{project.link}}">View site</a>
-                    <span aria-hidden="true" class="px-1">|</span>
-                    <a aria-label="{{aria_label_link_gh}}" href="{{project.link}}">GitHub</a>
-                </div>
-                <a href="{{project.link}}" target="_blank" rel="noreferrer" class="block shadow-sm mb-4 hover:shadow-md transition-shadow">
-                    {% picture img_path project.alt  %}
-                </a>
-                <p>{{project.description}}</p>
-                <div class="flex py-1 absolute bottom-0">
-                    {% for tool in project.tools %}
-                        <span class="text-xs mr-1 mt-2 block">{{tool}}</span>
-                    {% endfor %}
-                </div>
-            </section>
-        {% endfor %}
-    </div>
-</div>
+{% comment %}
+  <div class="container">
+      {% include 'heading', level: 1, text: title %}
+      <div class="grid gap-5 lg:gap-4 lg:grid-cols-3">
+          {% for project in portfolio %}
+              {% assign img_path = 'images/' | append: project.img %}
+              {% assign aria_label_link = "Visit the site for " | append: project.link %}
+              {% assign aria_label_link_gh = "Visit the GitHub repo for " | append: project.link %}
+              <section class="relative pb-5">
+                <h2>{project.title}</h2>
+                  <div class="flex mb-2 text-xs uppercase">
+                      <a aria-label="{{aria_label_link}}" href="{{project.link}}">View site</a>
+                      <span aria-hidden="true" class="px-1">|</span>
+                      <a aria-label="{{aria_label_link_gh}}" href="{{project.link}}">GitHub</a>
+                  </div>
+                  <a href="{{project.link}}" target="_blank" rel="noreferrer" class="block shadow-sm mb-4 hover:shadow-md transition-shadow">
+                      {% picture img_path project.alt  %}
+                  </a>
+                  <p>{{project.description}}</p>
+                  <div class="flex py-1 absolute bottom-0">
+                      {% for tool in project.tools %}
+                          <span class="text-xs mr-1 mt-2 block">{{tool}}</span>
+                      {% endfor %}
+                  </div>
+              </section>
+          {% endfor %}
+      </div>
+  </div>
+{% endcomment %}

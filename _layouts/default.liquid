@@ -1,29 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    {% include 'head', site: site, page: page, title: title %}
-    <body class="relative min-h-screen font-body text-dark
-            dark:text-light bg-light dark:bg-dark ">
-        {% include 'ie-notice'%}
-        {% include 'skip-to-content' %}
-        {% include 'back-to-top' %}
-        <div class="z-10 flex justify-end">
-            {% include 'color-switch' %}
-        </div>
-        <header class="container pt-10vh">
-            <a href="/">
-                <h1 class="uppercase font-extrabold text-4xl mb-1 mt-4
-                    font-display">{{site.title}}</h1>
-            </a>
-            <p>Web Developer<span aria-hidden="true" class="px-1 lg:px-2">+</span>Raleigh, NC</p>
-            <!-- <div class="container"> -->
-            {% include 'navigation', navigation: navigation, page: page %}
-            <!-- </div> -->
-        </header>
-        <main class="mb-6 leading-relaxed	" id="main">
-            {{ content }}
-        </main>
-        {% comment %}
-        {% include 'footer', builtBy: site.builtBy, navigation: navigation_footer %}
-        {% endcomment %}
-    </body>
+  {% include 'head', site: site, page: page, title: title %}
+  <body>
+    {%- render 'header', navigation: navigation, page: page, collections: collections -%}
+    <main class="contain" id="main">
+      {{ content }}
+    </main>
+    {%- render 'footer', page: page -%}
+  </body>
 </html>

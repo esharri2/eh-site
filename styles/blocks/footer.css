@@ -1,0 +1,15 @@
+.footer {
+  align-items: center;
+  /* background-color: var(--color-primary-dark); */
+  /* clip-path: polygon(0 0, 90% 0, 100% 100%, 10% 100%); */
+  /* clip-path: polygon(15% 0, 70% 0, 15% 100%, 15% 100%); */
+  /* clip-path: polygon(10% 0, 70% 0, 90% 100%, 30% 100%); */
+
+  /* color: var(--color-primary-light); */
+  justify-content: center;
+  margin-top: auto;
+  padding: 120px 0 40px;
+}
+.footer a {
+  color: inherit;
+}

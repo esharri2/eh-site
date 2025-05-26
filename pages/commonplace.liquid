@@ -1,7 +1,8 @@
 ---
 title: Commonplace
 displayTitle: Commonplace book
-permalink: false
+eleventyNavigation:
+  key: commonplace
 pagination:
   data: collections.commonplace
   size: 10
@@ -9,50 +10,57 @@ pagination:
   reverse: true
 ---
 <div class="container">
-    {% include 'heading', level: 1, text: displayTitle %}
-    {% for quote in quotes %}
-        <section class="py-4 lg:pb-6 max-w-screen-md">
-            {% assign date = quote.data.date%}
-            {% if quote.data.embed_url %}
-                <div class="text-xs uppercase text-right pb-2">Posted
-                {% prettyDate date %}</div>
-                {% include 'youtube-embed', embed_url: quote.data.embed_url%}
-            {% else %}
-                {% assign name = quote.data.name %}
-                {% assign url = quote.data.url %}
-                {% assign title = quote.data.title %}
-                {% assign publication = quote.data.publication %}
-                {% assign content = quote.templateContent %}
-                <figure>
-                    <div class="text-xs uppercase text-right pb-2">Posted
-                    {% prettyDate date %}</div>
-                    <blockquote {% if url%} cite="{{url}}" {% endif %}>
-                        {{content}}
-                    </blockquote>
-                    <figcaption class="pt-2 text-left">
-                        <span>{{name}}</span>
-                        {% if title or publication %}
-                            <div>
-                                <cite class="not-italic">
-                                    {% if title %}
-                                        <span>"{{title}}"</span>
-                                    {% endif %}
-                                    {% if title and publication %},
-                                    {% endif %}
-                                    {% if publication %}
-                                        <span class="italic">{{publication}}</span>
-                                    {% endif %}
-                                </cite>
-                            </div>
-                        {% endif %}
-                        {% if quote.data.source %}
-                            ,
-                            <cite {% unless quote.data.italic == false %} class="italic" {% endunless %}>{{quote.data.source}}</cite>
-                        {% endif %}
-                    </figcaption>
-                </figure>
+  <h1>{{ displayTitle }}</h1>
+  {% for quote in quotes %}
+    <section class="py-4 lg:pb-6 max-w-screen-md">
+      {% assign date = quote.data.date %}
+      {% if quote.data.embed_url %}
+        <div class="text-xs uppercase text-right pb-2">Posted {{ date }}</div>
+      {% else %}
+        {% assign name = quote.data.name %}
+        {% assign url = quote.data.url %}
+        {% assign title = quote.data.title %}
+        {% assign publication = quote.data.publication %}
+        {% assign content = quote.templateContent %}
+        <figure>
+          <div class="text-xs uppercase text-right pb-2">Posted {{ date }}</div>
+          <blockquote
+            {% if url %}
+              cite="{{url}}"
             {% endif %}
-        </section>
-    {% endfor %}
-    {% include 'pagination', pagination: pagination %}
-</div> 
+          >
+            {{ content }}
+          </blockquote>
+          <figcaption class="pt-2 text-left">
+            <span>{{ name }}</span>
+            {% if title or publication %}
+              <div>
+                <cite class="not-italic">
+                  {% if title %}
+                    <span>"{{ title }}"</span>
+                  {% endif %}
+                  {% if title and publication -%}
+                    ,
+                  {% endif %}
+                  {% if publication %}
+                    <span class="italic">{{ publication }}</span>
+                  {% endif %}
+                </cite>
+              </div>
+            {% endif %}
+            {% if quote.data.source %}
+              ,
+              <cite
+                {% unless quote.data.italic == false %}
+                  class="italic"
+                {% endunless %}
+              >
+                {{- quote.data.source -}}
+              </cite>
+            {% endif %}
+          </figcaption>
+        </figure>
+      {% endif %}
+    </section>
+  {% endfor %}
+</div>

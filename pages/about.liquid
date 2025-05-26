@@ -1,5 +1,8 @@
 ---
 title: About me
+description: Who he?
+eleventyNavigation:
+  key: about
 social_links:
   - link: https://bandcamp.com/evanh
     icon: bandcamp.svg
@@ -10,17 +13,6 @@ social_links:
   - link: https://www.linkedin.com/in/evan-harrison/
     icon: linkedin.svg
     label: Linkedin
+--- 
 
----
-<div class="container">
-    {% include 'heading', level: 1, text: title %}
-    <p class="max-w-screen-md">I am a web developer in Raleigh, North Carolina. I mostly work on big websites for big companies. But I also enjoy building small, impactful sites for people who are doing and making cool things. I try to develop sites and applications with a user-first mindset so that the final result is accessible, performant, pleasing, and powerful.</p>
-    {% include 'h2', text: 'Follow me on:'%}
-    <ul class="flex">
-        {% for social in social_links%}
-            {% assign icon = '/_includes/icons/' | append: social.icon%}
-            <a class="flex text-xs uppercase flex-col justify-center items-center mr-2 transition-all border-opacity-0 border-b-2 border-dashed border-dark dark:border-light hover:border-opacity-100" href="{{social.link}}">{{icon | svgContents:'w-3 h-3'}}<span class="mt-1">{{social.label}}</span>
-            </a>
-        {% endfor %}
-    </ul>
-</div>
+(about page)

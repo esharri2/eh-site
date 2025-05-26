@@ -1,0 +1,17 @@
+[
+  {
+    "link": "https://bandcamp.com/evanh",
+    "icon": "bandcamp",
+    "label": "Bandcamp"
+  },
+  {
+    "link": "https://github.com/esharri2",
+    "icon": "github",
+    "label": "Github"
+  },
+  {
+    "link": "https://www.linkedin.com/in/evan-harrison/",
+    "icon": "linkedin",
+    "label": "Linkedin"
+  }
+]

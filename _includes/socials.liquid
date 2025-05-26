@@ -1,0 +1,12 @@
+<ul>
+  {% for social in socials %}
+    <li>
+      <a href="{{ social.link }}">
+        {% assign path = 'icons/' | append: social.icon %}
+        {% comment %} {% render 'icons/bandcamp' %}} {% endcomment %}
+        {% render path %}
+        <div>{{ social.label }}</div>
+      </a>
+    </li>
+  {% endfor %}
+</ul>

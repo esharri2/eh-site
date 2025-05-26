@@ -1,0 +1,39 @@
+:root {
+  --color-primary-light: #eef0f2; /* anti-flash white */
+  --color-primary-light-dark: #dce2e5;
+  --color-primary-dark: #353b3c; /* onyx */
+  --color-primary-accent: #f37748;
+  --font-stack: Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans",
+    Arial, sans-serif;
+  font-weight: normal;
+  --font-display: var(--font-stack);
+  --font-body: var(--font-stack), Oxygen-Sans, Ubuntu, Cantarell,
+    "Helvetica Neue", sans-serif;
+  --transition: all 0.25s cubic-bezier(0.36, 0.88, 0, 0.96);
+
+  font-size: 20px;
+}
+
+body {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-body);
+  min-height: 100vh;
+}
+
+body > * {
+  width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+}
+
+img {
+  height: auto;
+}

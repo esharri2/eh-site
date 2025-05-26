@@ -1,27 +1,26 @@
----js
-{
-  title: 'Recent posts',
-  pagination: {
-    data: 'collections.post',
-    size: 4,
-    alias: 'posts',
-    reverse: true,
-    before: function(data) {
-      return data.filter((item) => item.data.permalink !== false);
-    }
-  }
-}
----
+<div class="splash stack">
+  <h1 class="logo logo--home | font-display font-bold no-underline">
+    Evan
+    <span class="logo__sub">Harrison</span>
+  </h1>
+  <div class="splash__body | stack">
+    <p class="splash__text">
+      Personal website of the aforementioned.<br>
+      Web development + other things.
+    </p>
+    {% render 'socials', socials: socials %}
 
-<div class="container">
-    {% comment %}
-    {% include 'heading', level: 1, text: title %}
-      {% include 'bloglist', posts: posts%} 
-    {% endcomment %}
-    {% capture icon %}
-        {{ '/_includes/icons/arrow-thin-right.svg' | svgContents:'ml-3 w-3 h-3' }}
-    {% endcapture %}
-    {% if posts.size > 4 %}
-      {% include 'button', label: "View all blogs", href: "/blog", icon: icon %}
-    {% endif %}
+    <ul class="splash__list | stack">
+      {% assign nav = collections.all | eleventyNavigation %}
+      {%- for page in nav -%}
+        <li class="splash__list-item button button--partial-border">
+          {% assign info = collections.all | find: 'fileSlug', page.key %}
+          <a class="splash__list-item-link | no-underline" href="{{ page.key }}">
+            {{- page.title }}
+            <div>{{ info.data.description }}</div>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
 </div>

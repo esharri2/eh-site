@@ -15,10 +15,10 @@
         "javascript"
     ],
     "[liquid]": {
-        "editor.defaultFormatter": "sissel.shopify-liquid",
+        "editor.defaultFormatter": "Shopify.theme-check-vscode",
     },
     "[html]": {
-        "editor.defaultFormatter": "sissel.shopify-liquid"
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "editor.formatOnSave": true,
     "editor.linkedEditing": true,
@@ -29,6 +29,6 @@
         "liquid"
     ],
     "files.associations": {
-        "*.liquid": "html"
+      "*.liquid": "liquid"
     }
 }

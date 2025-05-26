@@ -1,0 +1,17 @@
+.header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (width >= 900px) {
+  .header__wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .nav {
+    display: flex;
+  }
+}

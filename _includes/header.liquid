@@ -1,0 +1,40 @@
+<div class="header__wrapper | contain">
+  <header class="header">
+    <a
+      class="logo | font-display font-bold no-underline {% if page.filePathStem == '/index' %} mask {% endif %}"
+      href="/"
+    >
+      <span class="hidden-s">Evan Harrison</span>
+      <span class="hidden-l"> EH</span>
+    </a>
+    <button
+      class="button | hidden-l"
+      aria-haspopup="true"
+      aria-expanded="false"
+      id="openmenu"
+    >
+      Menu
+    </button>
+  </header>
+
+  <nav class="nav | hidden">
+    <ul class="nav__list | cluster">
+      {% assign nav = collections.all | eleventyNavigation %}
+      {%- for item in nav -%}
+        {%- if page.filePathStem contains item.key -%}
+          {%- assign current_attribute = 'aria-current="page"' -%}
+        {%- else -%}
+          {%- assign current_attribute = null -%}
+        {%- endif -%}
+        <li {{ current_attribute }}>
+          <a
+            class="button button--link"
+            href="/{{ item.key }}"
+          >
+            {{- item.title -}}
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </nav>
+</div>

@@ -1,0 +1,30 @@
+.nav {
+  height: 0;
+  interpolate-size: allow-keywords;
+  overflow: clip;
+  transition-property: height, display;
+  transition-duration: 1s;
+  transition-behavior: allow-discrete;
+
+  @media (width >= 900px) {
+    height: auto;
+  }
+}
+
+.nav__list {
+  --cluster-space-row: 10px;
+  --cluster-space-column: 20px;
+
+  display: flex;
+  justify-content: flex-end;
+  list-style-type: none;
+  padding: 10px 0 20px;
+}
+
+.nav:not(.hidden) {
+  height: auto;
+
+  @starting-style {
+    height: 0;
+  }
+}
